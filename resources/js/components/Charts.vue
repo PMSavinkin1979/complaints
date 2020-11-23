@@ -89,11 +89,12 @@
                             </v-card-title>
                             <v-data-table dense :headers="headersG" hide-default-footer :items="itemsG" sort-by="vidgar">
                                 <template v-slot:body.append>
-                                    <tr>
-                                        <td></td>
+                                    <tr style="background: silver">
+                                        <!--<td></td>-->
                                         <td>
                                             <v-text-field v-show="isShow(summaZ)" v-model="summaZ" type="number" label="Итого"></v-text-field>
                                         </td>
+                                        <td></td>
                                     </tr>
                                 </template>
                             </v-data-table>

@@ -22,11 +22,8 @@
 
                  this.renderChart({
                      datasets: [{
+                         label:'votex',
                          data: this.masiv,
-                         title:{
-                             display:true,
-                             text: 'Затраты по видам ГС'
-                         },
                          backgroundColor: [
                              'rgba(255, 99, 132, 1)',
                              'rgba(54, 162, 235, 1)',
@@ -50,7 +47,7 @@
          },
          mounted () {
              // Overwriting base render method with actual data.
-             this.renderChart({
+             /*this.renderChart({
                  datasets: [{
                      data: this.masiv,
                      backgroundColor: [
@@ -67,7 +64,7 @@
                  }],
                  // These labels appear in the legend and in the tooltips when hovering different arcs
                  labels: this.headers
-             })
+             })*/
 
          },
          /*updated() {

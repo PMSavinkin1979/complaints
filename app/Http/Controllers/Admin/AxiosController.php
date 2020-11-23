@@ -54,11 +54,16 @@ class AxiosController extends Controller
         unset($nam['name_vina']);
         unset($nam['name_ustranen']);
         unset($nam['name_status']);
-        unset($nam['short_zakazchik']);
+        /*unset($nam['short_zakazchik']);
         unset($nam['short_months']);
         unset($nam['short_zakazchik2']);
         unset($nam['name2_flag']);
-        unset($nam['name_flag']);
+        unset($nam['name_flag']);*/
+        //dump($nam);
+        if (gettype($nam['months']) == 'array')
+        {
+            $nam['months']=json_encode($nam['months']);
+        }
         //dump($nam);
         $new = Main::create($nam);
         return $new->id;

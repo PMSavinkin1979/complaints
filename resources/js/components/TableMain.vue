@@ -839,6 +839,11 @@
                 else
                 {
                     let id=0
+                    // укажем, что в работе
+                    this.editedItem.flag = 1
+                    // укажем регресс есть или нет
+                    this.editedItem.regressionBool = this.editedItem.checkbox9
+
                     //console.log(this.editedItem)
                     // отправка на сервер изменений
                     axios.post('/axios-send/newSave', {name: this.editedItem}).then(respond => {
@@ -993,6 +998,15 @@
                 this.editedItem.ustranenie_id = 5
                 //this.getNDate();
                 this.editedItem.data = this.getNDate();
+                // костылек, потом поправлю
+                let arr = []
+                arr['id']=1
+                arr['name']='В работе'
+                arr['name2']='В работе'
+                arr['deleted_at']=null
+                this.itemStatusSelect_card = arr
+                this.datee = []
+
             },
             getNDate() {
                 /*alert(1)*/
