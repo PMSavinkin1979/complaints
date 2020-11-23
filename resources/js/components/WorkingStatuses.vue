@@ -107,7 +107,7 @@ export default {
         },
         dialogDeleteText: '',
         idDesabled: false,
-        title: 'Выручка',
+        title: 'Раб. статус',
     }),
 
     computed: {

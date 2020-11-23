@@ -104,7 +104,7 @@ export default {
         },
         dialogDeleteText: '',
         idDesabled: false,
-        title: 'Причина гарантии',
+        title: 'Выручка',
     }),
 
     computed: {

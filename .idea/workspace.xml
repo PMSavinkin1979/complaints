@@ -18,7 +18,10 @@
   <component name="ChangeListManager">
     <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AnyChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AnyChart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Purposes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Purposes.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/WorkingStatuses.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/WorkingStatuses.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +195,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606037823885</updated>
       <workItem from="1606037830640" duration="792000" />
-      <workItem from="1606103875610" duration="928000" />
+      <workItem from="1606103875610" duration="1195000" />
+      <workItem from="1606106674659" duration="2056000" />
     </task>
     <task id="LOCAL-00001" summary="new project">
       <created>1606104128751</created>
@@ -201,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606104128752</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <created>1606104894049</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606104894049</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,18 +240,24 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="new project" />
-    <option name="LAST_COMMIT_MESSAGE" value="new project" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2176" y="116" key="CommitChangelistDialog2" timestamp="1606104125501">
+    <state x="2176" y="116" key="CommitChangelistDialog2" timestamp="1606104892602">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
-    <state x="2176" y="116" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104125501" />
+    <state x="2176" y="116" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104892602" />
+    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1606106713062">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106713062" />
     <state width="1540" height="107" key="GridCell.Tab.0.bottom" timestamp="1606103763440">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -257,14 +274,14 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1540" height="107" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state x="301" y="61" key="SettingsEditor" timestamp="1606103969561">
+    <state x="301" y="61" key="SettingsEditor" timestamp="1606106739964">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="301" y="61" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103969561" />
-    <state x="2152" y="272" key="Vcs.Push.Dialog.v2" timestamp="1606104577459">
+    <state x="301" y="61" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106739964" />
+    <state x="2152" y="272" key="Vcs.Push.Dialog.v2" timestamp="1606104915833">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
-    <state x="2152" y="272" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104577459" />
+    <state x="2152" y="272" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104915833" />
     <state x="601" y="335" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606104378493">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

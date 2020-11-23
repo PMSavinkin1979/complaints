@@ -31,12 +31,16 @@
                              'rgba(255, 99, 132, 1)',
                              'rgba(54, 162, 235, 1)',
                              'rgba(255, 206, 86, 1)',
+                             'rgba(28, 255, 1, 255)',
+                             'rgba(173, 0, 255, 255)',
+                             'rgba(0, 255, 180, 255)',
+                             'rgba(0, 32, 22, 255)',
                          ],
-                         borderColor: [
+                         /*borderColor: [
                              'rgba(255, 99, 132, 1)',
                              'rgba(54, 162, 235, 1)',
                              'rgba(255, 206, 86, 1)',
-                         ],
+                         ],*/
                          borderWidth: 1
                      }],
                      // These labels appear in the legend and in the tooltips when hovering different arcs
