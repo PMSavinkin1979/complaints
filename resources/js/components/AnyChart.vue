@@ -7,11 +7,7 @@
 
      export default {
          extends: Doughnut,
-         plugins:{
-             labels:[
-                 {render: 'value'}
-             ]
-         },
+
          props:{
              masiv:{
                  type:Array,
@@ -28,7 +24,6 @@
                  this.renderChart({
                      labels: this.headers,
                      datasets: [{
-                         label: 'Данные 1',
                          data: this.masiv,
                          backgroundColor: [
                              'rgba(255, 99, 132, 1)',
@@ -46,8 +41,15 @@
                      ],*/
                          borderWidth: 1
                      }],
-                     responsive: true,
-                     maintainAspectRatio: false
+                     /*options:{
+                         plugins:{
+                             labels:{
+                                 rendel: 'label',
+                                 fontColor: '#000',
+                                 position: 'outside'
+                             }
+                         }
+                     }*/
                  })
 
              }
@@ -56,7 +58,7 @@
              this.renderChart({
                  labels: this.headers,
                  datasets: [{
-                     label: 'Данные 1',
+                     //label: 'Данные 1',
                      data: this.masiv,
                      backgroundColor: [
                          'rgba(255, 99, 132, 1)',

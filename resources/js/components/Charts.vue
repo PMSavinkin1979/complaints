@@ -276,6 +276,8 @@
                  if (this.itemsG == '')
                  {
                      console.log('нет данных для передачи')
+                     this.itemsSend = []
+                     this.headersSend = []
                      this.$store.dispatch('SET_SNACKBARMESSAGE', 'нет данных для передачи' )
                      this.$store.dispatch('SET_SNACKBARBOOL', true)
                  }
