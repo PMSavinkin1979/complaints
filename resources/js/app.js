@@ -15,6 +15,9 @@ import VueRouter from 'vue-router'
 
 import VueCharts from 'vue-chartjs'
 import {Bar} from "vue-chartjs"
+/*import ChartDataLabels from 'chartjs-plugin-datalabels'
+Chart.plugins.unregister(ChartDataLabels);*/
+
 
 /**
  * The following block of code may be used to automatically register your

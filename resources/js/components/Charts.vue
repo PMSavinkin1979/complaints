@@ -278,6 +278,8 @@
                      console.log('нет данных для передачи')
                      this.itemsSend = []
                      this.headersSend = []
+                     this.chartdata = {}
+                     this.options = {}
                      this.$store.dispatch('SET_SNACKBARMESSAGE', 'нет данных для передачи' )
                      this.$store.dispatch('SET_SNACKBARBOOL', true)
                  }
@@ -297,6 +299,9 @@
                      nam1 = nam1+']'
                      this.itemsSend = JSON.parse(str)
                      this.headersSend = JSON.parse(nam1)
+                     //console.log(this.chartdata)
+                     //console.log(this.options)
+                     //this.chartdata2 = this.chartdata2
                      this.$store.dispatch('SET_SNACKBARMESSAGE', 'данные отправленны' )
                      this.$store.dispatch('SET_SNACKBARBOOL', true)
                  }

@@ -12,7 +12,7 @@
   "dependencies": {
     "@mdi/font": "^5.3.45",
     "chart.js": "^2.9.4",
-    "chartjs-plugin-labels": "^1.1.0",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "js-file-download": "^0.4.12",
     "vue-chartjs": "^3.5.1",
     "vue-router": "^3.4.8",
