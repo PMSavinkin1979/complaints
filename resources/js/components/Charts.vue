@@ -54,12 +54,16 @@
                                 <v-btn x-small color="primary" @click="fontPlus()">+</v-btn>
                                 <v-btn x-small color="primary" @click="fontMinus()">-</v-btn>
                                 <v-spacer></v-spacer>
-                                <v-text-field v-model="search" append-icon="mdi-magnify" label="Поиск"></v-text-field>
+                                <v-btn x-small color="primary" @click="clearVuex()"><v-icon small>mdi-broom</v-icon></v-btn>
+                                <v-text-field v-model="this.$store.getters.SEARCH" class="pl-2 ml-2"></v-text-field>  <!--append-icon="mdi-magnify" label="Поиск"-->
                             </v-card-title>
-                            <v-data-table dense :headers="headers" :items="items" :search="search">
+                            <v-data-table dense :headers="headers" :items="items" :search="this.$store.getters.SEARCH">
+                                <!--отрисовка таблицы-->
                                 <template v-slot:item="{item}">
-                                    <tr>
-                                        <td :style="fontS+fn+fpx">{{ item.prikaz_gar }}</td>
+                                    <tr @click="clickTr(item)" to="/">
+                                        <td :style="fontS+fn+fpx">{{ item.prikaz_gar }}
+                                            <v-icon x-small left color="red">{{ iconVina(item) }}</v-icon>
+                                        </td>
                                         <v-tooltip bottom>
                                             <template v-slot:activator="{ on, attrs}">
                                                 <td :style="fontS+fn+fpx" v-on="on">{{ item.short_zakazchik }}</td>
@@ -88,6 +92,14 @@
                                 по видам ГС
                             </v-card-title>
                             <v-data-table dense :headers="headersG" hide-default-footer :items="itemsG" sort-by="vidgar">
+                                <!--раскрасим выбранное в диаграмме-->
+                                <template v-slot:item="{item}">
+                                    <tr>
+                                        <td>{{ item.vidgs }}</td>
+                                        <td>{{ item.vidgar }}</td>
+                                    </tr>
+                                </template>
+                                <!--итоговая сумма-->
                                 <template v-slot:body.append>
                                     <tr style="background: silver">
                                         <!--<td></td>-->
@@ -164,10 +176,13 @@
                  fpx:'px',
                  kvartal:[],
                  currentResult:0,
+                 search2:'',
              }
          },
          created () {
              this.initialize()
+         },
+         watch:{
          },
          computed:{
             totalSum: function(){
@@ -241,14 +256,14 @@
                  }
                  // указываем текущий кварта
                  this.$store.dispatch('SET_QUARTERS', this.getUnique)
-                 console.log(this.getUnique)
+                 //console.log(this.getUnique)
                  axios.post('/axios-send/chartStart',{month: months, god: this.$store.getters.GOD, kvartal: this.$store.getters.QUARTERS}).then(respond => {
                      this.items = respond.data.table1
                      this.itemsG = respond.data.table2
                      this.summaZ = this.totalSum
                      let summm = ((this.summaZ/respond.data.purpose)*100)
                      this.currentResult = summm.toPrecision(3)
-                     console.log(this.currentResult)
+                     //console.log(this.currentResult)
                      /*console.log(this.summaZ)
                      console.log(respond.data.purpose)*/
                      this.dataSendChart()
@@ -289,12 +304,15 @@
                      let nam1='['
                      for (let i=0; i<this.itemsG.length; i++)
                      {
-                         str = str + this.itemsG[i].vidgar + ','
+                         // в процентах %
+                         str = str + String(Math.round((this.itemsG[i].vidgar/this.summaZ)*100)) + ','
+                         // в рублях
+                         //str = str + this.itemsG[i].vidgar + ','
                          nam1 = nam1 + '"'+this.itemsG[i].vidgs+'"' + ','
                      }
                      str = str.substring(0,str.length-1)
                      nam1 = nam1.substring(0,nam1.length-1)
-                     //console.log(nam1)
+                     //console.log(str)
                      str = str+']'
                      nam1 = nam1+']'
                      this.itemsSend = JSON.parse(str)
@@ -321,13 +339,30 @@
              },
              fontMinus(){
                  this.fn--
-             }
-         }
+             },
+             clearVuex(){
+                 this.$store.dispatch('SET_SEARCH','')
+             },
+             iconVina(item){
+                 //console.log(item.regression)
+                 if (item.regressionBool == true )
+                 {
+                     return 'mdi-email-send-outline'
+                 }
+             },
+             clickTr(item){
+                 this.$store.dispatch('SET_DANYE', item)
+                 this.$router.go(-1)
+             },
+         },
      }
 </script>
 
 <style scoped>
-.fss{
-    font-size: xx-small;
+.ok{
+    color: red;
+}
+.notOk{
+    color: black;
 }
 </style>

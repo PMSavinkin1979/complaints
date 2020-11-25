@@ -1175,8 +1175,7 @@ class AxiosController extends Controller
             $masiv = Main::where('months','LIKE','%'.$value.'%')
                 ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
                 ->join('vina','mains.vina_id','=','vina.id')
-                ->select('prikaz_gar','zakazchik','prikaz','zatraty','vina_id','vid_garantii',
-                    'months','vid_garantiy.name as name_vid_gara','vina.name as name_vina')
+                ->select('mains.*','vid_garantiy.name as name_vid_gara','vina.name as name_vina') //'prikaz_gar','zakazchik','prikaz','zatraty','vina_id','vid_garantii','months',
                 ->get();
             foreach ($masiv as $item)
             {

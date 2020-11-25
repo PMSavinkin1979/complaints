@@ -68,7 +68,8 @@ const store = new Vuex.Store({
         danye:[],
         snackbarMessage:'',
         snackbarBool: true,
-        quarters:[] //кварталы
+        quarters:[], //кварталы
+        search:'',
     },
     mutations: {
         SET_NAME: (state, payload) => {
@@ -100,6 +101,9 @@ const store = new Vuex.Store({
         },
         SET_QUARTERS: (state, payload) => {
             state.quarters = payload
+        },
+        SET_SEARCH: (state, payload) => {
+            state.search = payload
         },
     },
     getters:{
@@ -133,6 +137,9 @@ const store = new Vuex.Store({
         QUARTERS: state => {
             return state.quarters
         },
+        SEARCH: state => {
+            return state.search
+        },
     },
     actions:{
         SET_NAME: (injectee, payload) => {
@@ -164,6 +171,9 @@ const store = new Vuex.Store({
         },
         SET_QUARTERS: (injectee, payload) => {
             injectee.commit('SET_QUARTERS',payload)
+        },
+        SET_SEARCH: (injectee, payload) => {
+            injectee.commit('SET_SEARCH',payload)
         },
     }
 })
