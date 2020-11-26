@@ -445,7 +445,7 @@
                          var fileLink = document.createElement('a');
                          fileLink.href = fileURL;
                          fileLink.type = 'application/vnd.ms-excel';
-                         let ft = 'отчет-'+'структура'+'-'+this.god+'.xlsx'
+                         let ft = 'отчет-'+'chart'+'-'+this.god+'.xlsx'
                          fileLink.setAttribute('download', ft);
                          document.body.appendChild(fileLink);
                          fileLink.click();
