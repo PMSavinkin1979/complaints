@@ -1,5 +1,4 @@
 
-
 <script>
      import {Doughnut} from 'vue-chartjs'
      import ChartDataLabels from 'chartjs-plugin-datalabels'
@@ -24,15 +23,24 @@
              },
          },
          methods:{
-             name(context){
+             clickMouse(context){
                  this.$store.dispatch('SET_SEARCH', context.dataset.labels[context.dataIndex])
+                 console.log(this.$store.getters.SEARCH)
+                 console.log(context)
+             },
+             enterMove(context){
+                 this.$store.dispatch('SET_SEARCH', context.dataset.labels[context.dataIndex])
+                 console.log(this.$store.getters.SEARCH)
+                 console.log(context)
+             },
+             leaveMove(context){
+                 this.$store.dispatch('SET_SEARCH', '')
                  console.log(this.$store.getters.SEARCH)
                  console.log(context)
              }
          },
          watch:{
              masiv(){
-
                  console.log('Из AnyChart')
                  //this.$store.dispatch('SET_SEARCH','65')
                  this.renderChart({
@@ -79,8 +87,9 @@
                                  },
                                  // нажатие
                                  listeners:{
-                                     click: this.name,
-                                     //enter: this.name
+                                     click: this.clickMouse,
+                                     enter: this.enterMove,
+                                     leave: this.leaveMove,
                                  }
                              }
                          },

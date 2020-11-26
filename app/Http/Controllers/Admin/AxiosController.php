@@ -621,35 +621,27 @@ class AxiosController extends Controller
         $god = $request->god;
         $head = $request->head;
 
+        /*dump($stat);
+        dump($god);
+        dump($head); exit();*/
+
         $put = $_SERVER['DOCUMENT_ROOT'];
         //dump($put);
         if ($stat==='В работе')
         {
-            $masiv = DB::table('mains')
+            $masiv = Main::whereBetween('data',[$god.'-01-01',$god.'-12-31'])
                 ->join('garantiy','mains.garantiy_id','=','garantiy.id')
                 ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
                 ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
                 ->join('vina','mains.vina_id','=','vina.id')
                 ->join('status','mains.status','=','status.id')
-                ->whereBetween('data',[$god.'-01-01',$god.'-12-31'])
-                ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
-                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
-                ->orderBy('id','asc')
-                ->whereNull('flag')
-                ->where('deleted_at','=', '0')
+                ->join('working_statuses','mains.flag','=','working_statuses.id')
+                ->select('mains.*','vid_garantiy.name as name_vid_gara',
+                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status',
+                    'garantiy.name as name_garantiy','working_statuses.name as name_flag','working_statuses.name2 as name2_flag')
+                ->where('flag','=',1)
+                ->orderBy('data','asc')
                 ->get();
-            /*$masiv = Main::whereBetween('data',[$god.'-01-01',$god.'-12-31'])
-                ->join('garantiy','mains.garantiy_id','=','garantiy.id')
-                ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
-                ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
-                ->join('vina','mains.vina_id','=','vina.id')
-                ->join('status','mains.status','=','status.id')
-                ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
-                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
-                ->orderBy('id','asc')
-                ->where('flag','=', null)
-                ->where('deleted_at','=', '0')
-                ->get();*/
         }
         if ($stat==='Завершенные')
         {
@@ -1131,7 +1123,6 @@ class AxiosController extends Controller
                 'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status',
                 'garantiy.name as name_garantiy','working_statuses.name as name_flag','working_statuses.name2 as name2_flag')
             ->where('flag','=',1)
-            //->where('mains.deleted_at','=', '0')
             ->orderBy('data','asc')
             ->get();
         //dump($masiv);

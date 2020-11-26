@@ -6,7 +6,7 @@
                     <v-row>
                         <!--Статус-->
                         <v-col cols="12" md="4">
-                            Cтруктура гарантийных расходов за
+                            Cтруктура рекламационных расходов за
                             <!--<v-select
                                 outlined
                                 :items="itemstatus"
@@ -60,7 +60,7 @@
                             <v-data-table dense :headers="headers" :items="items" :search="this.$store.getters.SEARCH">
                                 <!--отрисовка таблицы-->
                                 <template v-slot:item="{item}">
-                                    <tr @click="clickTr(item)" to="/">
+                                    <tr @click="clickTr(item)">
                                         <td :style="fontS+fn+fpx">{{ item.prikaz_gar }}
                                             <v-icon x-small left color="red">{{ iconVina(item) }}</v-icon>
                                         </td>
@@ -94,7 +94,7 @@
                             <v-data-table dense :headers="headersG" hide-default-footer :items="itemsG" sort-by="vidgar">
                                 <!--раскрасим выбранное в диаграмме-->
                                 <template v-slot:item="{item}">
-                                    <tr>
+                                    <tr :class="test(item.vidgs)">
                                         <td>{{ item.vidgs }}</td>
                                         <td>{{ item.vidgar }}</td>
                                     </tr>
@@ -118,6 +118,65 @@
                             <any-chart :masiv="this.itemsSend" :headers="this.headersSend"></any-chart>
                         </v-card>
                     </v-col>
+                    <!--Модальное окно для просмотра информации-->
+                    <v-dialog v-model="dialog" max-width="900">
+                        <v-card>
+                            <v-card-title class="headline">
+                                Рекламация - {{editedItem.zakazchik}}
+                            </v-card-title>
+                            <v-card-text>
+                                <v-row style="background: azure">
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.prikaz_gar" label="№ ГП"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.prikaz" label="№ приказа"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.zatraty" label="Расходы"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-textarea rows="1" dense :value="editedItem.months" label="Период расходов"></v-textarea>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.name_vina" label="Виновный"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.name_vid_gara" label="Причина ГС"></v-text-field>
+                                    </v-col>
+                                </v-row>
+                                <v-divider></v-divider>
+                                <v-row>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.data" label="Дата начала"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field rows="1" dense :value="editedItem.data_end" label="Дата конца"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.name_ustranen" label="Устранение"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.name_garantiy" label="Гарантия"></v-text-field>
+                                    </v-col>
+                                    <!--<v-col cols="12" md="3" class="">
+                                        <v-textarea rows="1" dense :value="editedItem.regression" label="Регрессия"></v-textarea>
+                                    </v-col>-->
+                                    <v-col cols="12" md="3" class="">
+                                        <v-checkbox label="Документы перенаправленны виновной стороне" dense :value="editedItem.regressionBool"></v-checkbox>
+                                    </v-col>
+                                    <!--<v-col cols="12" md="3" class="">
+                                        <v-text-field dense :value="editedItem.name_vid_gara" label="Причина ГС"></v-text-field>
+                                    </v-col>-->
+                                </v-row>
+                                <v-divider></v-divider>
+                            </v-card-text>
+                            <v-card-actions>
+                                <!--<v-spacer></v-spacer>-->
+                                <v-btn color="green darken-1" text @click="dialog = false">Закрыть</v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-dialog>
                 </v-row>
             </v-card>
         </v-container>
@@ -130,6 +189,7 @@
      export default {
          data () {
              return {
+                 dialog: false,
                  monthSelect:[],
                  months:[
                      {stat: 'Янв', num: '01', god: this.$store.getters.GOD},
@@ -170,6 +230,7 @@
                  ],
                  itemsSend:[],
                  headersSend:[],
+                 procent:[],
                  summaZ: 0,
                  fontS:'font-size: ',
                  fn: 12,
@@ -177,6 +238,7 @@
                  kvartal:[],
                  currentResult:0,
                  search2:'',
+                 editedItem:[]
              }
          },
          created () {
@@ -287,12 +349,12 @@
                  }
              },
              dataSendChart(){
-
                  if (this.itemsG == '')
                  {
                      console.log('нет данных для передачи')
                      this.itemsSend = []
                      this.headersSend = []
+                     this.procent = []
                      this.chartdata = {}
                      this.options = {}
                      this.$store.dispatch('SET_SNACKBARMESSAGE', 'нет данных для передачи' )
@@ -300,28 +362,33 @@
                  }
                  else
                  {
+                     this.summaZ = this.totalSum
+                     console.log(this.itemsG)
                      let str='['
+                     let procent='['
                      let nam1='['
                      for (let i=0; i<this.itemsG.length; i++)
                      {
                          // в процентах %
-                         str = str + String(Math.round((this.itemsG[i].vidgar/this.summaZ)*100)) + ','
+                         procent = procent + String(Math.round((this.itemsG[i].vidgar/this.summaZ)*100)) + ','
                          // в рублях
-                         //str = str + this.itemsG[i].vidgar + ','
+                         str = str + this.itemsG[i].vidgar + ','
                          nam1 = nam1 + '"'+this.itemsG[i].vidgs+'"' + ','
                      }
+                     procent = procent.substring(0,procent.length-1)
                      str = str.substring(0,str.length-1)
                      nam1 = nam1.substring(0,nam1.length-1)
                      //console.log(str)
+                     procent = procent+']'
                      str = str+']'
                      nam1 = nam1+']'
-                     this.itemsSend = JSON.parse(str)
+                     /*console.log(this.summaZ)
+                     console.log(procent)
+                     console.log(str)
+                     console.log(nam1)*/
+                     this.itemsSend = JSON.parse(procent)
+                     //this.itemsSend = JSON.parse(str)
                      this.headersSend = JSON.parse(nam1)
-                     //console.log(this.chartdata)
-                     //console.log(this.options)
-                     //this.chartdata2 = this.chartdata2
-                     this.$store.dispatch('SET_SNACKBARMESSAGE', 'данные отправленны' )
-                     this.$store.dispatch('SET_SNACKBARBOOL', true)
                  }
              },
              isShow(sz){
@@ -351,8 +418,22 @@
                  }
              },
              clickTr(item){
-                 this.$store.dispatch('SET_DANYE', item)
-                 this.$router.go(-1)
+                 //console.log(item)
+                 this.editedItem = item
+                 this.dialog = true
+             },
+             test(sear){
+                 if (sear == this.$store.getters.SEARCH){
+                     /*console.log('******')
+                     console.log(sear)
+                     console.log(this.$store.getters.SEARCH)
+                     console.log('******')*/
+                     return 'ok'
+                 }else{
+                     //console.log('НЕЕЕТ')
+                     return 'notOk'
+                 }
+
              },
          },
      }
@@ -360,9 +441,11 @@
 
 <style scoped>
 .ok{
-    color: red;
+    color: white;
+    background: teal;
 }
 .notOk{
     color: black;
+    background: white;
 }
 </style>

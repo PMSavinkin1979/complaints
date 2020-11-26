@@ -63,7 +63,7 @@ const store = new Vuex.Store({
         role:'',
         id:'',
         userBoolean: '',
-        god:'2020',
+        god:'',
         stat:'В работе',
         danye:[],
         snackbarMessage:'',

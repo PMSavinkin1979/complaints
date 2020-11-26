@@ -644,7 +644,7 @@
                 checkbox8: false,
                 checkbox9: false,
                 god:'',
-                //danTest:this.$store.getters.DANYE,
+                danTest:[],
             }
         },
         computed: {
@@ -666,22 +666,12 @@
             }
         },
         created () {
+            let date = new Date()
+            let god = date.getFullYear()
+            this.$store.dispatch('SET_GOD',god)
             this.god = this.$store.getters.GOD
             this.initialize()
         },
-        mounted() {
-            console.log(this.$store.getters.DANYE)
-            console.log(this.$store.getters.DANYE.length)
-            if (this.$store.getters.DANYE.length > 0)
-            {
-                this.editItem (this.$store.getters.DANYE)
-            }
-        },
-        /*updated: function (){
-            this.$nextTick(function(){
-                console.log(this.$store.getters.DANYE)
-            })
-        },*/
         methods: {
             initialize () { //
                 axios.post('/axios-send/workStatus',{status: 'trimmed'}).then(respond => {
