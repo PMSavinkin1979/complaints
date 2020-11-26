@@ -1036,13 +1036,13 @@
 
             },
             inExcel(){
-                axios.post('/axios-send/inExcel',{stat: this.itemStatusSelect.name2, god: this.god, head: this.headers},{responseType: 'blob'})
+                axios.post('/axios-send/inExcel',{stat: this.itemStatusSelect.name2, masiv: '', god: this.god, head: this.headers},{responseType: 'blob'})
                     .then(respond => {
                         var fileURL = window.URL.createObjectURL(new Blob([respond.data]));
                         var fileLink = document.createElement('a');
                         fileLink.href = fileURL;
                         fileLink.type = 'application/vnd.ms-excel';
-                        let ft = 'отчет-'+this.itemStatusSelect+'-'+this.god+'.xlsx'
+                        let ft = 'отчет-'+this.itemStatusSelect.name2+'-'+this.god+'.xlsx'
                         fileLink.setAttribute('download', ft);
                         document.body.appendChild(fileLink);
                         fileLink.click();
@@ -1055,7 +1055,7 @@
                 let int = String(Math.trunc(razr))
                 //alert(int)
                 if(int.length <= 3) {
-                    this.label = 'Сумма затрат ('+this.itemStatusSelect+') '+this.god+ 'г. - '
+                    this.label = 'Сумма затрат ('+this.itemStatusSelect.name2+') '+this.god+ 'г. - '
                     return int
                 }
                 let space = 0
@@ -1069,7 +1069,7 @@
                     number = int.charAt(i) + number
                     space++
                 }
-                this.label = 'Сумма затрат ('+this.itemStatusSelect+') '+this.god+ 'г. - '
+                this.label = 'Сумма затрат ('+this.itemStatusSelect.name2+') '+this.god+ 'г. - '
                 return number
             },
             monthChange(months){

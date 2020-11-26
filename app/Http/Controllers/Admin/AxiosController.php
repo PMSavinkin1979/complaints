@@ -620,89 +620,87 @@ class AxiosController extends Controller
         $stat = $request->stat;
         $god = $request->god;
         $head = $request->head;
+        $masi = $request->masiv;
 
         /*dump($stat);
         dump($god);
         dump($head); exit();*/
 
         $put = $_SERVER['DOCUMENT_ROOT'];
-        //dump($put);
-        if ($stat==='В работе')
+        if ($masi == '')
         {
-            $masiv = Main::whereBetween('data',[$god.'-01-01',$god.'-12-31'])
-                ->join('garantiy','mains.garantiy_id','=','garantiy.id')
-                ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
-                ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
-                ->join('vina','mains.vina_id','=','vina.id')
-                ->join('status','mains.status','=','status.id')
-                ->join('working_statuses','mains.flag','=','working_statuses.id')
-                ->select('mains.*','vid_garantiy.name as name_vid_gara',
-                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status',
-                    'garantiy.name as name_garantiy','working_statuses.name as name_flag','working_statuses.name2 as name2_flag')
-                ->where('flag','=',1)
-                ->orderBy('data','asc')
-                ->get();
+            if ($stat==='В работе')
+            {
+                $masiv = DB::table('mains')
+                    ->join('garantiy','mains.garantiy_id','=','garantiy.id')
+                    ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
+                    ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
+                    ->join('vina','mains.vina_id','=','vina.id')
+                    ->join('status','mains.status','=','status.id')
+                    ->join('working_statuses','mains.flag','=','working_statuses.id')
+                    ->whereBetween('data',[$god.'-01-01',$god.'-12-31'])
+                    ->select('mains.*','vid_garantiy.name as name_vid_gara',
+                        'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status',
+                        'garantiy.name as name_garantiy','working_statuses.name as name_flag','working_statuses.name2 as name2_flag')
+                    ->where('flag','=',1)
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if ($stat==='Завершенные')
+            {
+                $masiv = DB::table('mains')
+                    ->join('garantiy','mains.garantiy_id','=','garantiy.id')
+                    ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
+                    ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
+                    ->join('vina','mains.vina_id','=','vina.id')
+                    ->join('status','mains.status','=','status.id')
+                    ->join('working_statuses','mains.flag','=','working_statuses.id')
+                    ->whereBetween('data',[$god.'-01-01',$god.'-12-31'])
+                    ->select('mains.*','vid_garantiy.name as name_vid_gara',
+                        'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status',
+                        'garantiy.name as name_garantiy','working_statuses.name as name_flag','working_statuses.name2 as name2_flag')
+                    ->where('flag','=',2)
+                    ->orderBy('id','asc')
+                    ->get();
+            }
+            if ($stat==='Удаленные')
+            {
+                $masiv = DB::table('mains')
+                    ->join('garantiy','mains.garantiy_id','=','garantiy.id')
+                    ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
+                    ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
+                    ->join('vina','mains.vina_id','=','vina.id')
+                    ->join('status','mains.status','=','status.id')
+                    ->whereBetween('data',[$god.'-01-01',$god.'-12-31'])
+                    ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
+                        'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
+                    ->orderBy('id','asc')
+                    //->whereNull('flag')
+                    ->whereNotNull('mains.deleted_at')
+                    ->get();
+                /*$masiv = Main::whereBetween('data',[$god.'-01-01',$god.'-12-31'])
+                    ->join('garantiy','mains.garantiy_id','=','garantiy.id')
+                    ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
+                    ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
+                    ->join('vina','mains.vina_id','=','vina.id')
+                    ->join('status','mains.status','=','status.id')
+                    ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
+                        'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
+                    ->orderBy('id','asc')
+                    ->where('flag','=', null)
+                    ->where('deleted_at','=', '1')
+                    ->get();*/
+            }
         }
-        if ($stat==='Завершенные')
+        else
         {
-            $masiv = DB::table('mains')
-                ->join('garantiy','mains.garantiy_id','=','garantiy.id')
-                ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
-                ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
-                ->join('vina','mains.vina_id','=','vina.id')
-                ->join('status','mains.status','=','status.id')
-                ->whereBetween('data',[$god.'-01-01',$god.'-12-31'])
-                ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
-                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
-                ->orderBy('id','asc')
-                ->whereNotNull('flag')
-                ->where('deleted_at','=', '0')
-                ->get();
-            /*$masiv = Main::whereBetween('data',[$god.'-01-01',$god.'-12-31'])
-                ->join('garantiy','mains.garantiy_id','=','garantiy.id')
-                ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
-                ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
-                ->join('vina','mains.vina_id','=','vina.id')
-                ->join('status','mains.status','=','status.id')
-                ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
-                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
-                ->orderBy('id','asc')
-                ->where('flag','=', 0)
-                ->where('deleted_at','=', '0')
-                ->get();*/
-        }
-        if ($stat==='Удаленные')
-        {
-            $masiv = DB::table('mains')
-                ->join('garantiy','mains.garantiy_id','=','garantiy.id')
-                ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
-                ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
-                ->join('vina','mains.vina_id','=','vina.id')
-                ->join('status','mains.status','=','status.id')
-                ->whereBetween('data',[$god.'-01-01',$god.'-12-31'])
-                ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
-                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
-                ->orderBy('id','asc')
-                ->whereNull('flag')
-                ->where('deleted_at','=', '1')
-                ->get();
-            /*$masiv = Main::whereBetween('data',[$god.'-01-01',$god.'-12-31'])
-                ->join('garantiy','mains.garantiy_id','=','garantiy.id')
-                ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
-                ->join('ustranenie','mains.ustranenie_id','=','ustranenie.id')
-                ->join('vina','mains.vina_id','=','vina.id')
-                ->join('status','mains.status','=','status.id')
-                ->select('mains.*','garantiy.name as name_garantiy','vid_garantiy.name as name_vid_gara',
-                    'ustranenie.name as name_ustranen','vina.name as name_vina','status.name as name_status')
-                ->orderBy('id','asc')
-                ->where('flag','=', null)
-                ->where('deleted_at','=', '1')
-                ->get();*/
+            $masiv = $masi;
         }
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
-        //dump($masiv);
+        /*dump($head);
+        dump($masiv[0]);exit();*/
         $row=2;
         $col=1;
         $colShapka=1;
@@ -711,8 +709,10 @@ class AxiosController extends Controller
             $sheet->setCellValueByColumnAndRow($colShapka,1,$hea['text']);
             $colShapka++;
             foreach ($masiv as $mas) {
-                foreach ($mas as $key => $m){
-                    if ($hea['value']===$key){
+                foreach ($mas as $key => $m){ //short_zakazchik
+                    if ($hea['value'] == 'short_zakazchik') {$hea['value'] = 'zakazchik';}
+                    if ($hea['value'] == 'short_months') {$hea['value'] = 'months';}
+                    if ($hea['value']==$key){
                         //echo $key.' => '.$m.'<br>';
                         $sheet->setCellValueByColumnAndRow($col,$row,$m);
                         $row++;
@@ -722,6 +722,8 @@ class AxiosController extends Controller
             $row=2;
             $col++;
         }
+        /*exit();*/
+
         $sheet->getStyle('A1:M1')->applyFromArray(['font'=>['bold'=>true]]);
         $sheet->getStyle('A1:M500')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $sheet->getColumnDimension('A')->setWidth(5);

@@ -54,6 +54,8 @@
                                 <v-btn x-small color="primary" @click="fontPlus()">+</v-btn>
                                 <v-btn x-small color="primary" @click="fontMinus()">-</v-btn>
                                 <v-spacer></v-spacer>
+                                <v-btn x-small color="primary" @click="inExcel()">в Excel</v-btn>
+                                <v-spacer></v-spacer>
                                 <v-btn x-small color="primary" @click="clearVuex()"><v-icon small>mdi-broom</v-icon></v-btn>
                                 <v-text-field v-model="this.$store.getters.SEARCH" class="pl-2 ml-2"></v-text-field>  <!--append-icon="mdi-magnify" label="Поиск"-->
                             </v-card-title>
@@ -205,7 +207,7 @@
                      {stat: 'Ноя', num: '11'},
                      {stat: 'Дек', num: '12'},
                  ],
-                 god:'2020',
+                 god:'',
                  itemStatusSelect:{stat: 'В работе'},
                  itemstatus:[
                      {stat: 'В работе'},
@@ -243,6 +245,7 @@
          },
          created () {
              this.initialize()
+             this.god = this.$store.getters.GOD
          },
          watch:{
          },
@@ -434,6 +437,22 @@
                      return 'notOk'
                  }
 
+             },
+             inExcel(){
+                 axios.post('/axios-send/inExcel',{stat: 'chart',masiv: this.items, god: this.god, head: this.headers},{responseType: 'blob'})
+                     .then(respond => {
+                         var fileURL = window.URL.createObjectURL(new Blob([respond.data]));
+                         var fileLink = document.createElement('a');
+                         fileLink.href = fileURL;
+                         fileLink.type = 'application/vnd.ms-excel';
+                         let ft = 'отчет-'+'структура'+'-'+this.god+'.xlsx'
+                         fileLink.setAttribute('download', ft);
+                         document.body.appendChild(fileLink);
+                         fileLink.click();
+                         axios.post('/axios/deleteExcel',{ft:ft}).then(respond => {
+                             console.log('Готово')
+                         })
+                     })
              },
          },
      }
