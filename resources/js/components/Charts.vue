@@ -43,7 +43,7 @@
                         </v-col>
                         <!--Цель-->
                         <v-col cols="12" md="4">
-                            Цель total - 0,35% <br> текущая - {{ currentResult }} %
+                            Total Цель - 0,35% <br> текущая - {{ currentResult }} %
                         </v-col>
                     </v-row>
                 </v-card-title>
@@ -287,22 +287,22 @@
                  if (month < 4)
                  {
                      arr = '["01","02","03"]'
-                     kv = ['010']
+                     kv = ['1']
                  }
                  if (month > 3 && month < 7)
                  {
                      arr = '["04","05","06"]'
-                     kv = ['020']
+                     kv = ['2']
                  }
                  if (month > 6 && month < 10)
                  {
                      arr = '["07","08","09"]'
-                     kv = ['030']
+                     kv = ['3']
                  }
                  if (month > 9)
                  {
                      arr = '["10","11","12"]'
-                     kv = ['040']
+                     kv = ['4']
 
                  }
                  this.monthSelect = JSON.parse(arr) //arr
@@ -320,10 +320,10 @@
                  //console.log(months)
                  for (let i=0; i<months.length; i++)
                  {
-                     if (months[i]<4) { this.kvartal.push('010') }
-                     if (months[i]>3 && months[i]<7) { this.kvartal.push('020') }
-                     if (months[i]>6 && months[i]<10) { this.kvartal.push('030') }
-                     if (months[i]>9) { this.kvartal.push('040') }
+                     if (months[i]<4) { this.kvartal.push('1') }
+                     if (months[i]>3 && months[i]<7) { this.kvartal.push('2') }
+                     if (months[i]>6 && months[i]<10) { this.kvartal.push('3') }
+                     if (months[i]>9) { this.kvartal.push('4') }
                  }
                  // указываем текущий кварта
                  this.$store.dispatch('SET_QUARTERS', this.getUnique)

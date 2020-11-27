@@ -17,11 +17,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AnyChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AnyChart.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Charts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Charts.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,8 +161,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\PhpStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -194,8 +199,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.production" />
         <item itemvalue="npm.watch" />
+        <item itemvalue="npm.production" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +214,8 @@
       <updated>1606037823885</updated>
       <workItem from="1606037830640" duration="792000" />
       <workItem from="1606103875610" duration="1195000" />
-      <workItem from="1606106674659" duration="87840000" />
+      <workItem from="1606106674659" duration="88205000" />
+      <workItem from="1606473116750" duration="2972000" />
     </task>
     <task id="LOCAL-00001" summary="new project">
       <created>1606104128751</created>
@@ -295,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606395375340</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update 27.11 14:23">
+      <created>1606469023906</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606469023906</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,51 +352,58 @@
     <MESSAGE value="update 25.11 17:35" />
     <MESSAGE value="update 26.11 16:42" />
     <MESSAGE value="update 26.11 17:56" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 26.11 17:56" />
+    <MESSAGE value="update 27.11 14:23" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 27.11 14:23" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2" timestamp="1606395372136">
+    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2" timestamp="1606469019366">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="2176" y="116" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104892602" />
-    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606395372136" />
-    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1606106713062">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606469019366" />
+    <state x="2296" y="231" key="FileChooserDialogImpl" timestamp="1606474715099">
+      <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106713062" />
-    <state width="1876" height="117" key="GridCell.Tab.0.bottom" timestamp="1606395830876">
+    <state x="2296" y="231" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474715099" />
+    <state width="1876" height="117" key="GridCell.Tab.0.bottom" timestamp="1606476108443">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1540" height="107" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606395830876" />
-    <state width="1876" height="117" key="GridCell.Tab.0.center" timestamp="1606395830876">
+    <state width="1876" height="117" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606476108443" />
+    <state width="1876" height="117" key="GridCell.Tab.0.center" timestamp="1606476108442">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1540" height="107" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606395830876" />
-    <state width="1876" height="117" key="GridCell.Tab.0.left" timestamp="1606395830876">
+    <state width="1876" height="117" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606476108442" />
+    <state width="1876" height="117" key="GridCell.Tab.0.left" timestamp="1606476108442">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1540" height="107" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606395830876" />
-    <state width="1876" height="117" key="GridCell.Tab.0.right" timestamp="1606395830876">
+    <state width="1876" height="117" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606476108442" />
+    <state width="1876" height="117" key="GridCell.Tab.0.right" timestamp="1606476108443">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1540" height="107" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606395830876" />
+    <state width="1876" height="117" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606476108443" />
     <state x="2353" y="241" key="RollbackChangesDialog" timestamp="1606212858251">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="2353" y="241" key="RollbackChangesDialog/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606212858251" />
-    <state x="301" y="61" key="SettingsEditor" timestamp="1606106739964">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state x="2476" y="99" width="998" height="881" key="SettingsEditor" timestamp="1606474727081">
+      <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="301" y="61" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106739964" />
-    <state x="392" y="182" key="Vcs.Push.Dialog.v2" timestamp="1606395390143">
+    <state x="2476" y="99" width="998" height="881" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474727081" />
+    <state x="392" y="182" key="Vcs.Push.Dialog.v2" timestamp="1606469040548">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="2152" y="272" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104915833" />
-    <state x="392" y="182" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606395390143" />
+    <state x="392" y="182" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606469040548" />
+    <state x="2874" y="269" width="435" height="595" key="ftp.server.browser" timestamp="1606474703677">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2874" y="269" width="435" height="595" key="ftp.server.browser/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474703677" />
     <state x="2321" y="421" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606127886309">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
