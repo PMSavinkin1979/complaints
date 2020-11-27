@@ -4,7 +4,7 @@
             <v-card>
                 <v-card-title>
                     <v-row>
-                        <!--Статус-->
+                        <!--Cтруктура рекламационных расходов за-->
                         <v-col cols="12" md="4">
                             Cтруктура рекламационных расходов за
                             <!--<v-select
@@ -27,9 +27,10 @@
                                       :menu-props="{ maxHeight: '400' }"
                                       item-text="stat"
                                       item-value="num"
+                                      value="ms"
                                       label="Выборка"
                                       multiple
-                                      hint="по месяцам"
+                                      hint="по месяцам или кварталам"
                                       dense
                                       v-model="monthSelect"
                                       @blur="monthChange(monthSelect)"
@@ -192,28 +193,32 @@
          data () {
              return {
                  dialog: false,
-                 monthSelect:[],
+                 monthSelect: {stat: '', num: '', ms: ''},
                  months:[
-                     {stat: 'Янв', num: '01', god: this.$store.getters.GOD},
-                     {stat: 'Фев', num: '02'},
-                     {stat: 'Мар', num: '03'},
-                     {stat: 'Апр', num: '04'},
-                     {stat: 'Май', num: '05'},
-                     {stat: 'Июн', num: '06'},
-                     {stat: 'Июл', num: '07'},
-                     {stat: 'Авг', num: '08'},
-                     {stat: 'Сен', num: '09'},
-                     {stat: 'Окт', num: '10'},
-                     {stat: 'Ноя', num: '11'},
-                     {stat: 'Дек', num: '12'},
+                     /*{stat: '1 квартал', num: '010', ms:'["01","02","03"]'},
+                     {stat: '2 квартал', num: '020', ms:'["04","05","06"]'},
+                     {stat: '3 квартал', num: '030', ms:'["07","08","09"]'},
+                     {stat: '4 квартал', num: '040', ms:'["10","11","12"]'},*/
+                     {stat: 'Янв', num: '01', ms: '01'},
+                     {stat: 'Фев', num: '02', ms: '02'},
+                     {stat: 'Мар', num: '03', ms: '03'},
+                     {stat: 'Апр', num: '04', ms: '04'},
+                     {stat: 'Май', num: '05', ms: '05'},
+                     {stat: 'Июн', num: '06', ms: '06'},
+                     {stat: 'Июл', num: '07', ms: '07'},
+                     {stat: 'Авг', num: '08', ms: '08'},
+                     {stat: 'Сен', num: '09', ms: '09'},
+                     {stat: 'Окт', num: '10', ms: '10'},
+                     {stat: 'Ноя', num: '11', ms: '11'},
+                     {stat: 'Дек', num: '12', ms: '12'},
                  ],
                  god:'',
-                 itemStatusSelect:{stat: 'В работе'},
+                 /*itemStatusSelect:{stat: 'В работе'},
                  itemstatus:[
                      {stat: 'В работе'},
                      {stat: 'Закрытые'},
                      {stat: 'Удаленные'}
-                 ],
+                 ],*/
                  search: '',
                  items:[],
                  itemsG:[],
@@ -282,25 +287,25 @@
                  if (month < 4)
                  {
                      arr = '["01","02","03"]'
-                     kv = ['1']
+                     kv = ['010']
                  }
                  if (month > 3 && month < 7)
                  {
                      arr = '["04","05","06"]'
-                     kv = ['2']
+                     kv = ['020']
                  }
                  if (month > 6 && month < 10)
                  {
                      arr = '["07","08","09"]'
-                     kv = ['3']
+                     kv = ['030']
                  }
                  if (month > 9)
                  {
                      arr = '["10","11","12"]'
-                     kv = ['4']
+                     kv = ['040']
 
                  }
-                 this.monthSelect = JSON.parse(arr)
+                 this.monthSelect = JSON.parse(arr) //arr
                  // указываем текущий кварта
                  this.$store.dispatch('SET_QUARTERS', kv)
                  axios.post('/axios-send/chartStart',{month: arr, god: this.$store.getters.GOD, kvartal: this.$store.getters.QUARTERS}).then(respond => {
@@ -310,14 +315,15 @@
                  })
              },
              monthChange(months){
+                 //console.log(this.monthSelect)
                  this.kvartal=[]
                  //console.log(months)
                  for (let i=0; i<months.length; i++)
                  {
-                     if (months[i]<4) { this.kvartal.push('1') }
-                     if (months[i]>3 && months[i]<7) { this.kvartal.push('2') }
-                     if (months[i]>6 && months[i]<10) { this.kvartal.push('3') }
-                     if (months[i]>9) { this.kvartal.push('4') }
+                     if (months[i]<4) { this.kvartal.push('010') }
+                     if (months[i]>3 && months[i]<7) { this.kvartal.push('020') }
+                     if (months[i]>6 && months[i]<10) { this.kvartal.push('030') }
+                     if (months[i]>9) { this.kvartal.push('040') }
                  }
                  // указываем текущий кварта
                  this.$store.dispatch('SET_QUARTERS', this.getUnique)
@@ -328,9 +334,6 @@
                      this.summaZ = this.totalSum
                      let summm = ((this.summaZ/respond.data.purpose)*100)
                      this.currentResult = summm.toPrecision(3)
-                     //console.log(this.currentResult)
-                     /*console.log(this.summaZ)
-                     console.log(respond.data.purpose)*/
                      this.dataSendChart()
                  })
              },

@@ -1138,7 +1138,11 @@ class AxiosController extends Controller
         $kvartal = $request->kvartal;
         $arr = array();
         $resultEnd = array();
-        //dump($month);
+
+        /*dump($month);
+        dump($god);
+        dump($kvartal);exit();*/
+
         if (gettype($month) == 'string')
         { //превращаем в ARRAY
             $months = json_decode($month);

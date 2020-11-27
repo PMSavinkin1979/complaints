@@ -25,18 +25,21 @@
          methods:{
              clickMouse(context){
                  this.$store.dispatch('SET_SEARCH', context.dataset.labels[context.dataIndex])
-                 console.log(this.$store.getters.SEARCH)
-                 console.log(context)
+                 //console.log(this.$store.getters.SEARCH)
+                 //console.log(context)
              },
              enterMove(context){
                  this.$store.dispatch('SET_SEARCH', context.dataset.labels[context.dataIndex])
-                 console.log(this.$store.getters.SEARCH)
-                 console.log(context)
+                 //console.log(this.$store.getters.SEARCH)
+                 //console.log(context)
              },
              leaveMove(context){
                  this.$store.dispatch('SET_SEARCH', '')
-                 console.log(this.$store.getters.SEARCH)
-                 console.log(context)
+                 //console.log(this.$store.getters.SEARCH)
+                 //console.log(context)
+             },
+             click(info){
+                 console.log(info)
              }
          },
          watch:{
@@ -56,7 +59,8 @@
                          responsive: true,
                          maintainAspectRatio: false,
                          tooltips:{
-                             enabled: true
+                             enabled: false,
+                             //mode: 'dataset'
                          },
                          title:{
                              display:true,
@@ -93,6 +97,7 @@
                                  }
                              }
                          },
+                         onClick: this.click
                      })
              },
          },
