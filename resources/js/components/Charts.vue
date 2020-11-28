@@ -43,7 +43,7 @@
                         </v-col>
                         <!--Цель-->
                         <v-col cols="12" md="4">
-                            Total Цель - 0,35% <br> текущая - {{ currentResult }} %
+                            <h6>Total Цель - 0,35%, Текущая - {{ currentResult }} %<br>Итого - ?</h6>
                         </v-col>
                     </v-row>
                 </v-card-title>
