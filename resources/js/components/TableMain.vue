@@ -355,7 +355,7 @@
                                             <v-list-item v-for="(item, i) in paymentsItems" :key="i">
                                                 <v-list-item-content v-on:mouseenter="show=true" v-on:mouseleave="show=false">
                                                     <v-list-item-title>
-                                                        {{item.months}} - {{item.payment}}
+                                                        {{item.months}} - {{item.payment}} руб
                                                     </v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-item-icon>
@@ -655,7 +655,7 @@
                 god:'',
                 danTest:[],
                 paymentsItemsSelect:[],
-                paymentsItems:[],
+                paymentsItems:{},
                 show: false,
             }
         },
@@ -762,12 +762,11 @@
                 {
                     this.datee = [] //new Date().toISOString().substr(0, 7)
                 }
-
                 //console.log(this.editedItem)
                 axios.post('/axios-get/files',{id:itemm.id}).then(respond => {
                     this.oldFiles = respond.data
                 })
-                axios.post('/axios-get/payments',{id:itemm.id}).then(respond => {
+                axios.post('/axios-send/payments',{id:itemm.id}).then(respond => {
                     this.paymentsItems = respond.data
                 })
                 //if (this.editedItem.deleted_at === 0) {this.iconPress='mdi-delete'}

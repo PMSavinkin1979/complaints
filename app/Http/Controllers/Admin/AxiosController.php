@@ -7,6 +7,7 @@ use App\Garantiy;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditOrNewGarantiyRequest;
 use App\Main;
+use App\Payment;
 use App\Purpose;
 use App\Status;
 use App\Ustranenie;
@@ -1254,7 +1255,11 @@ class AxiosController extends Controller
         return $current_year;
     }
 
-    public function payments(Request $request){
+    public function payments(Request $request)
+    {
         $id = $request->id;
+        $masiv = Payment::where('id_mains','=',$id)->get();
+        return $masiv;
+
     }
 }
