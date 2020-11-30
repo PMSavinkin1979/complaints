@@ -345,60 +345,65 @@
                                     <span>Если есть факт отправки документов виновному, то вкратце описать</span>
                                 </v-tooltip>
                             </v-col>
-                            <!--затраты-->
+
                             <v-col cols="12" md="4" class="">
-                                <v-text-field type="number" outlined dense v-model="editedItem.zatraty" label="Затраты"></v-text-field>
+                                Затраты <v-btn color="primary" x-small @click="dialogPay=true">добавить</v-btn>
+                                <v-card>
+                                    <v-list nav dense>
+                                        <v-list-item-group v-model="paymentsItemsSelect" color="primary">
+                                            <v-list-item v-for="(item, i) in paymentsItems" :key="i">
+                                                <v-list-item-content v-on:mouseenter="show=true" v-on:mouseleave="show=false">
+                                                    <v-list-item-title>
+                                                        {{item.months}} - {{item.payment}}
+                                                    </v-list-item-title>
+                                                </v-list-item-content>
+                                                <v-list-item-icon>
+                                                    <v-icon small color="red">mdi-delete</v-icon>
+                                                </v-list-item-icon>
+                                            </v-list-item>
+                                        </v-list-item-group>
+                                    </v-list>
+                                </v-card>
                             </v-col>
-                            <!--период затрат-->
-                            <v-col cols="12" md="8" class="">
-                                <v-menu
-                                    ref="menuu"
-                                    v-model="menuu"
-                                    :close-on-content-click="false"
-                                    :return-value.sync="datee"
-                                    transition="scale-transition"
-                                    offset-y
-                                    max-width="290px"
-                                    min-width="290px"
-                                >
-                                    <template v-slot:activator="{ on, attrs }">
-                                        <v-text-field
-                                            dense
-                                            v-model="datee"
-                                            label="Период затрат"
-                                            prepend-icon="mdi-calendar"
-                                            readonly
-                                            v-bind="attrs"
-                                            v-on="on"
-                                        ></v-text-field>
-                                    </template>
-                                    <v-date-picker
-                                        v-model="datee"
-                                        type="month"
-                                        no-title
-                                        scrollable
-                                        multiple
-                                    >
-                                        <v-spacer></v-spacer>
-                                        <v-btn
-                                            text
-                                            color="primary"
-                                            @click="menuu = false"
-                                        >
-                                            Cancel
-                                        </v-btn>
-                                        <v-btn
-                                            text
-                                            color="primary"
-                                            @click="$refs.menuu.save(datee)"
-                                        >
-                                            OK
-                                        </v-btn>
-                                    </v-date-picker>
-                                </v-menu>
-                            </v-col>
+                            <!--Модальное для добавления затрат-->
+                            <v-dialog v-model="dialogPay" max-width="450">
+                                <v-card>
+                                    <v-card-title class="headline">
+                                        Затраты
+                                    </v-card-title>
+                                    <v-card-text>
+                                        <v-row>
+                                            <v-col cols="12" md="12">
+                                            <v-card elevation="7">
+                                                <v-card-text>
+                                                    <!--период затрат-->
+                                                    <v-menu ref="menuu" v-model="menuu" :close-on-content-click="false" :return-value.sync="datee"
+                                                            transition="scale-transition" offset-y max-width="290px" min-width="290px">
+                                                        <template v-slot:activator="{ on, attrs }">
+                                                            <v-text-field dense v-model="datee" label="Период затрат" prepend-icon="mdi-calendar" readonly
+                                                                          v-bind="attrs" v-on="on"></v-text-field>
+                                                        </template>
+                                                        <v-date-picker v-model="datee" type="month" no-title scrollable>
+                                                            <v-spacer></v-spacer>
+                                                            <v-btn text color="primary" @click="menuu = false">Отмена</v-btn>
+                                                            <v-btn text color="primary" @click="$refs.menuu.save(datee)">Выбрать</v-btn>
+                                                        </v-date-picker>
+                                                    </v-menu>
+                                                    <!--затраты-->
+                                                    <v-text-field type="number" outlined dense v-model="editedItem.zatraty" label="Затраты"></v-text-field>
+                                                </v-card-text>
+                                            </v-card>
+                                            </v-col>
+                                        </v-row>
+                                    </v-card-text>
+                                    <v-card-actions>
+                                        <v-btn color="green darken-1" text @click="dialogPay = false">Сохранить</v-btn>
+                                        <v-btn color="green darken-1" text @click="dialogPay = false">Отмена</v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
                             <!--выбор файлов-->
-                            <v-col cols="12" md="6" class="">
+                            <v-col cols="12" md="4" class="">
                                 <input style="display: none" type="file" id="files" ref="files" multiple v-on:change="handleFilesUpload()"/>
                                 <label>Ранее добавленные файлы</label>
                                 <v-card outlined>
@@ -417,7 +422,7 @@
                                 </v-card>
                             </v-col>
                             <!--Добавить файлы-->
-                            <v-col cols="12" md="6" class="">
+                            <v-col cols="12" md="4" class="">
                                 <label>Добавить файлы <v-icon color="green" v-on:click="addFiles()">mdi-file-plus</v-icon></label>
                                 <v-card outlined>
                                     <v-list dense>
@@ -516,6 +521,7 @@
                 menu: false,
                 menuEnd: false,
                 dialog: false,
+                dialogPay: false,
                 headers: [
                     {
                         text: '',
@@ -645,6 +651,12 @@
                 checkbox9: false,
                 god:'',
                 danTest:[],
+                paymentsItemsSelect:[],
+                paymentsItems:[
+                    { months: '[2020-01]', payment: '150000' },
+                    { months: '[2020-02]', payment: '10000' },
+                ],
+                show: false,
             }
         },
         computed: {
@@ -1194,6 +1206,12 @@
             },
             ok(dat){
                 console.log(dat)
+            },
+            mouseE(item){
+                console.log('вошел')
+            },
+            mouseL(item){
+                console.log('вышел')
             },
         },
     }

@@ -1232,6 +1232,25 @@ class AxiosController extends Controller
 
         $bigMasiv = array('table1'=>$resultEnd, 'table2'=>$vidGarEnd, 'purpose'=>$totalFakt);
 
+        //$this->calcQuarterlyPercent();
         return $bigMasiv;
+    }
+
+    public function calcQuarterlyPercent(){
+        $current_year = date('Y');
+
+        $mas = array('-01','-02','-03','-04','-05','-06','-07','-08','-09','-10','-11','-12');
+        $cik = 0;
+        for ($n = 0; $n < 4;$n++){
+            for ($m = $cik; $m < ($cik+3); $m++){
+                //echo $mas[$m].' ';
+
+            }
+            $cik=$cik+3;
+            echo '<br>';
+        }
+        //dump($result);
+        exit();
+        return $current_year;
     }
 }

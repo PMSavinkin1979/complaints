@@ -332,8 +332,10 @@
                      this.items = respond.data.table1
                      this.itemsG = respond.data.table2
                      this.summaZ = this.totalSum
+                     //текущий процент
                      let summm = ((this.summaZ/respond.data.purpose)*100)
                      this.currentResult = summm.toPrecision(3)
+                     // запускаем метод для формирования графика
                      this.dataSendChart()
                  })
              },
