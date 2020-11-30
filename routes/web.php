@@ -67,4 +67,5 @@ Route::post('/axios-send/allEntries','Admin\AxiosController@allEntries');
 Route::post('/axios-send/start','Admin\AxiosController@start');
 
 Route::post('/axios-send/chartStart','Admin\AxiosController@chartStart');
+Route::post('/axios-send/payments','Admin\AxiosController@payments');
 //test

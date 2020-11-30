@@ -347,7 +347,8 @@
                             </v-col>
 
                             <v-col cols="12" md="4" class="">
-                                Затраты <v-btn color="primary" x-small @click="dialogPay=true">добавить</v-btn>
+                                Затраты
+                                <v-btn color="primary" x-small @click="dialogPay=true">добавить</v-btn>
                                 <v-card>
                                     <v-list nav dense>
                                         <v-list-item-group v-model="paymentsItemsSelect" color="primary">
@@ -377,7 +378,7 @@
                                             <v-card elevation="7">
                                                 <v-card-text>
                                                     <!--период затрат-->
-                                                    <v-menu ref="menuu" v-model="menuu" :close-on-content-click="false" :return-value.sync="datee"
+<!--                                                    <v-menu ref="menuu" v-model="menuu" :close-on-content-click="false" :return-value.sync="datee"
                                                             transition="scale-transition" offset-y max-width="290px" min-width="290px">
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field dense v-model="datee" label="Период затрат" prepend-icon="mdi-calendar" readonly
@@ -388,7 +389,9 @@
                                                             <v-btn text color="primary" @click="menuu = false">Отмена</v-btn>
                                                             <v-btn text color="primary" @click="$refs.menuu.save(datee)">Выбрать</v-btn>
                                                         </v-date-picker>
-                                                    </v-menu>
+                                                    </v-menu>-->
+                                                    <v-select v-model="monthSelect" :items="months" item-text="stat" item-value="stat"
+                                                              label="Период" outlined dense multiple></v-select>
                                                     <!--затраты-->
                                                     <v-text-field type="number" outlined dense v-model="editedItem.zatraty" label="Затраты"></v-text-field>
                                                 </v-card-text>
@@ -397,7 +400,7 @@
                                         </v-row>
                                     </v-card-text>
                                     <v-card-actions>
-                                        <v-btn color="green darken-1" text @click="dialogPay = false">Сохранить</v-btn>
+                                        <v-btn color="green darken-1" text @click="monthSelectSave()">Сохранить</v-btn>
                                         <v-btn color="green darken-1" text @click="dialogPay = false">Отмена</v-btn>
                                     </v-card-actions>
                                 </v-card>
@@ -652,10 +655,7 @@
                 god:'',
                 danTest:[],
                 paymentsItemsSelect:[],
-                paymentsItems:[
-                    { months: '[2020-01]', payment: '150000' },
-                    { months: '[2020-02]', payment: '10000' },
-                ],
+                paymentsItems:[],
                 show: false,
             }
         },
@@ -766,6 +766,9 @@
                 //console.log(this.editedItem)
                 axios.post('/axios-get/files',{id:itemm.id}).then(respond => {
                     this.oldFiles = respond.data
+                })
+                axios.post('/axios-get/payments',{id:itemm.id}).then(respond => {
+                    this.paymentsItems = respond.data
                 })
                 //if (this.editedItem.deleted_at === 0) {this.iconPress='mdi-delete'}
                 if (this.editedItem.deleted_at != null) {this.itemStatusSelect_card = 'Удалена'}
@@ -1212,6 +1215,9 @@
             },
             mouseL(item){
                 console.log('вышел')
+            },
+            monthSelectSave(){
+                console.log(this.monthSelect)
             },
         },
     }

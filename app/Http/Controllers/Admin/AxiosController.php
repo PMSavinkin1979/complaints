@@ -1253,4 +1253,8 @@ class AxiosController extends Controller
         exit();
         return $current_year;
     }
+
+    public function payments(Request $request){
+        $id = $request->id;
+    }
 }
