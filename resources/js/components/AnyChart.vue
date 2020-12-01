@@ -92,8 +92,8 @@
                                  // нажатие
                                  listeners:{
                                      click: this.clickMouse,
-                                     enter: this.enterMove,
-                                     leave: this.leaveMove,
+                                     //enter: this.enterMove,
+                                     //leave: this.leaveMove,
                                  }
                              }
                          },

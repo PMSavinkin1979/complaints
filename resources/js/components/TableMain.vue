@@ -68,7 +68,7 @@
                     <v-select style="font-size: xx-small"
                               :items="months"
                               :menu-props="{ maxHeight: '400' }"
-                              item-text="stat"
+                              item-text="name"
                               item-value="num"
                               label="Выборка (по Начало)"
                               multiple
@@ -345,21 +345,22 @@
                                     <span>Если есть факт отправки документов виновному, то вкратце описать</span>
                                 </v-tooltip>
                             </v-col>
-
-                            <v-col cols="12" md="4" class="">
-                                Затраты
-                                <v-btn color="primary" x-small @click="dialogPay=true">добавить</v-btn>
+                            <!--перечень Затраты-->
+                            <v-col cols="12" md="6" class="">
+                                <label>Затраты</label>
+                                <v-btn color="primary" x-small @click="newPayment()">добавить</v-btn>
                                 <v-card>
                                     <v-list nav dense>
                                         <v-list-item-group v-model="paymentsItemsSelect" color="primary">
                                             <v-list-item v-for="(item, i) in paymentsItems" :key="i">
                                                 <v-list-item-content v-on:mouseenter="show=true" v-on:mouseleave="show=false">
                                                     <v-list-item-title>
-                                                        {{item.months}} - {{item.payment}} руб
+                                                        {{JSON.parse(item.months)}} - {{item.payment}} руб
                                                     </v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-item-icon>
-                                                    <v-icon small color="red">mdi-delete</v-icon>
+                                                    <v-icon small color="green" @click="editPayment(item.id, item.payment, item.months)">mdi-playlist-edit</v-icon>
+                                                    <v-icon small color="red" @click="deletePayment(item.id)">mdi-delete</v-icon>
                                                 </v-list-item-icon>
                                             </v-list-item>
                                         </v-list-item-group>
@@ -378,7 +379,7 @@
                                             <v-card elevation="7">
                                                 <v-card-text>
                                                     <!--период затрат-->
-<!--                                                    <v-menu ref="menuu" v-model="menuu" :close-on-content-click="false" :return-value.sync="datee"
+                                                    <!--<v-menu ref="menuu" v-model="menuu" :close-on-content-click="false" :return-value.sync="datee"
                                                             transition="scale-transition" offset-y max-width="290px" min-width="290px">
                                                         <template v-slot:activator="{ on, attrs }">
                                                             <v-text-field dense v-model="datee" label="Период затрат" prepend-icon="mdi-calendar" readonly
@@ -390,34 +391,36 @@
                                                             <v-btn text color="primary" @click="$refs.menuu.save(datee)">Выбрать</v-btn>
                                                         </v-date-picker>
                                                     </v-menu>-->
-                                                    <v-select v-model="monthSelect" :items="months" item-text="stat" item-value="stat"
-                                                              label="Период" outlined dense multiple></v-select>
+                                                    <v-select v-model="monthSelect" :items="months" item-text="name" item-value="num"
+                                                              label="Период затрат" outlined dense multiple></v-select>
                                                     <!--затраты-->
-                                                    <v-text-field type="number" outlined dense v-model="editedItem.zatraty" label="Затраты"></v-text-field>
+                                                    <v-text-field type="number" outlined dense v-model="newZatraty" label="Сумма затрат за период"></v-text-field>
                                                 </v-card-text>
                                             </v-card>
                                             </v-col>
                                         </v-row>
                                     </v-card-text>
                                     <v-card-actions>
-                                        <v-btn color="green darken-1" text @click="monthSelectSave()">Сохранить</v-btn>
+                                        <v-btn color="green darken-1" text @click="paymentsSave(idPayment)">Сохранить</v-btn>
                                         <v-btn color="green darken-1" text @click="dialogPay = false">Отмена</v-btn>
                                     </v-card-actions>
                                 </v-card>
                             </v-dialog>
                             <!--выбор файлов-->
-                            <v-col cols="12" md="4" class="">
+                            <v-col cols="12" md="3" class="">
                                 <input style="display: none" type="file" id="files" ref="files" multiple v-on:change="handleFilesUpload()"/>
                                 <label>Ранее добавленные файлы</label>
-                                <v-card outlined>
+                                <v-card>
                                     <v-list dense>
                                         <v-list-item-group color="primary">
                                             <v-list-item v-for="(file, key) in oldFiles" :key="key">
                                                 <v-list-item-content @click="readFile(key, file.title, file.mime)">
-                                                    {{ file.title }}
+                                                    <v-list-item-title>
+                                                        {{ file.title }}
+                                                    </v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-item-icon @click="deleteFile(key)">
-                                                    <v-icon color="red">mdi-file-remove</v-icon>
+                                                    <v-icon color="red" small>mdi-file-remove</v-icon>
                                                 </v-list-item-icon>
                                             </v-list-item>
                                         </v-list-item-group>
@@ -425,20 +428,19 @@
                                 </v-card>
                             </v-col>
                             <!--Добавить файлы-->
-                            <v-col cols="12" md="4" class="">
+                            <v-col cols="12" md="3" class="">
                                 <label>Добавить файлы <v-icon color="green" v-on:click="addFiles()">mdi-file-plus</v-icon></label>
-                                <v-card outlined>
+                                <v-card>
                                     <v-list dense>
                                         <v-list-item-group color="primary">
                                             <v-list-item
                                                 v-for="(file, key) in files"
-                                                :key="key"
-                                            >
+                                                :key="key">
                                                 <v-list-item-content>
                                                     <v-list-item-title v-text="file.name"></v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-item-icon>
-                                                    <v-icon color="red" v-on:click="removeFile( key )">mdi-file-remove</v-icon>
+                                                    <v-icon small color="red" v-on:click="removeFile( key )">mdi-file-remove</v-icon>
                                                 </v-list-item-icon>
                                             </v-list-item>
                                         </v-list-item-group>
@@ -619,20 +621,7 @@
                 timeout: 0,
                 color:'cyan darken-2',
                 monthSelect:[],
-                months:[
-                    {stat: 'Янв', num: '01'},
-                    {stat: 'Фев', num: '02'},
-                    {stat: 'Мар', num: '03'},
-                    {stat: 'Апр', num: '04'},
-                    {stat: 'Май', num: '05'},
-                    {stat: 'Июн', num: '06'},
-                    {stat: 'Июл', num: '07'},
-                    {stat: 'Авг', num: '08'},
-                    {stat: 'Сен', num: '09'},
-                    {stat: 'Окт', num: '10'},
-                    {stat: 'Ноя', num: '11'},
-                    {stat: 'Дек', num: '12'},
-                ],
+                months:[],
                 monthZatratySelect:[],
                 monthsZatraty:[
                     {stat: 'Янв', num: '01'},
@@ -655,8 +644,10 @@
                 god:'',
                 danTest:[],
                 paymentsItemsSelect:[],
-                paymentsItems:{},
+                paymentsItems:[],
                 show: false,
+                newZatraty:0,
+                idPayment: 0,
             }
         },
         computed: {
@@ -675,7 +666,7 @@
         watch: {
             dialog (val) {
                 val || this.close()
-            }
+            },
         },
         created () {
             let date = new Date()
@@ -683,6 +674,9 @@
             this.$store.dispatch('SET_GOD',god)
             this.god = this.$store.getters.GOD
             this.initialize()
+        },
+        updated() {
+            this.god = this.$store.getters.GOD
         },
         methods: {
             initialize () { //
@@ -696,9 +690,7 @@
                     arr['name2']='В работе'
                     arr['deleted_at']=null
                     //console.log(arr)
-
                     this.itemStatusSelect = arr
-
                 }),
                 axios.post('/axios-send/start',{god: this.god}).then(respond => {
                     this.danye = respond.data
@@ -719,6 +711,9 @@
                 }),
                 axios.post('/axios-send/ustran',{status: 'trimmed'}).then(respond => {
                     this.itemsustran = respond.data
+                }),
+                axios.post('/axios-send/months').then(respond => {
+                    this.months = respond.data
                 })
             },
             combobox1(){
@@ -762,10 +757,11 @@
                 {
                     this.datee = [] //new Date().toISOString().substr(0, 7)
                 }
-                //console.log(this.editedItem)
+                //загружаем файлы если есть
                 axios.post('/axios-get/files',{id:itemm.id}).then(respond => {
                     this.oldFiles = respond.data
                 })
+                //загружаем затраты
                 axios.post('/axios-send/payments',{id:itemm.id}).then(respond => {
                     this.paymentsItems = respond.data
                 })
@@ -916,9 +912,6 @@
                 // 3 - гарантия не определена
                 if (status===3) return 'trstatus1';
             },
-            /*trclick(status){
-                alert(status)
-            },*/
             addFiles(){
                 this.$refs.files.click();
             },
@@ -1195,13 +1188,6 @@
             check3(stat){
                 console.log(stat)
             },
-            /*summaZatraty(){
-                axios.post('/axios-send/summaZatraty',{check2: this.checkbox8, check: this.checkbox7,
-                    stat: this.itemStatusSelect.stat, months: this.monthSelect, god: this.god}).then(respond => {
-                    /!*document.getElementById('axios-send').innerHTML = respond.data*!/
-                    this.zatratyAll=this.razryd(respond.data[0].summa)
-                })
-            },*/
             zatratyPeriod(zatr){
                 //console.log(zatr)
                 return 'Затраты в сумме: ' + zatr + ' - указать за какие месяца'
@@ -1209,14 +1195,36 @@
             ok(dat){
                 console.log(dat)
             },
-            mouseE(item){
-                console.log('вошел')
+            paymentsSave(idPayment){
+                axios.post('/axios-send/paymentsSave',{id:this.editedItem.id, zatraty: this.newZatraty,
+                    months: this.monthSelect, idPayment: idPayment, god: this.god}).then(respond => {
+                    this.paymentsItems = respond.data
+                })
+                this.dialogPay = false;
+                this.idPayment = 0
             },
-            mouseL(item){
-                console.log('вышел')
+            editPayment(id, payment, months){
+                this.idPayment = id
+                this.monthSelect = JSON.parse(months)
+                this.newZatraty = payment
+                this.dialogPay = true
+                //console.log(JSON.parse(months))
+                //console.log(payment)
             },
-            monthSelectSave(){
-                console.log(this.monthSelect)
+            deletePayment(id){
+                if (confirm('Удалить, вы уверенны?'))
+                {
+                    //console.log('удалить')
+                    //console.log(id)
+                    axios.post('/axios-send/paymentsDelete',{id: id, id_mains:this.editedItem.id,}).then(respond => {
+                        this.paymentsItems = respond.data
+                    })
+                }
+            },
+            newPayment(){
+                this.monthSelect = []
+                this.newZatraty = 0
+                this.dialogPay = true
             },
         },
     }

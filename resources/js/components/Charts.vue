@@ -25,7 +25,7 @@
                                       outlined
                                       :items="months"
                                       :menu-props="{ maxHeight: '400' }"
-                                      item-text="stat"
+                                      item-text="name"
                                       item-value="num"
                                       value="ms"
                                       label="Выборка"
@@ -194,31 +194,8 @@
              return {
                  dialog: false,
                  monthSelect: {stat: '', num: '', ms: ''},
-                 months:[
-                     /*{stat: '1 квартал', num: '010', ms:'["01","02","03"]'},
-                     {stat: '2 квартал', num: '020', ms:'["04","05","06"]'},
-                     {stat: '3 квартал', num: '030', ms:'["07","08","09"]'},
-                     {stat: '4 квартал', num: '040', ms:'["10","11","12"]'},*/
-                     {stat: 'Янв', num: '01', ms: '01'},
-                     {stat: 'Фев', num: '02', ms: '02'},
-                     {stat: 'Мар', num: '03', ms: '03'},
-                     {stat: 'Апр', num: '04', ms: '04'},
-                     {stat: 'Май', num: '05', ms: '05'},
-                     {stat: 'Июн', num: '06', ms: '06'},
-                     {stat: 'Июл', num: '07', ms: '07'},
-                     {stat: 'Авг', num: '08', ms: '08'},
-                     {stat: 'Сен', num: '09', ms: '09'},
-                     {stat: 'Окт', num: '10', ms: '10'},
-                     {stat: 'Ноя', num: '11', ms: '11'},
-                     {stat: 'Дек', num: '12', ms: '12'},
-                 ],
+                 months:[],
                  god:'',
-                 /*itemStatusSelect:{stat: 'В работе'},
-                 itemstatus:[
-                     {stat: 'В работе'},
-                     {stat: 'Закрытые'},
-                     {stat: 'Удаленные'}
-                 ],*/
                  search: '',
                  items:[],
                  itemsG:[],
@@ -308,6 +285,9 @@
                  this.monthSelect = JSON.parse(arr) //arr
                  // указываем текущий кварта
                  this.$store.dispatch('SET_QUARTERS', kv)
+                 axios.post('/axios-send/months').then(respond => {
+                     this.months = respond.data
+                 })
                  axios.post('/axios-send/chartStart',{month: arr, god: this.$store.getters.GOD, kvartal: this.$store.getters.QUARTERS}).then(respond => {
                      this.items = respond.data.table1
                      this.itemsG = respond.data.table2

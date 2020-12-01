@@ -7,6 +7,7 @@ use App\Garantiy;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditOrNewGarantiyRequest;
 use App\Main;
+use App\Month;
 use App\Payment;
 use App\Purpose;
 use App\Status;
@@ -29,7 +30,6 @@ class AxiosController extends Controller
 {
     public function save(Main $main, Request $request)
     {
-
         $nam = $request->name;
         unset($nam['name_garantiy']);
         unset($nam['name_vid_gara']);
@@ -1261,5 +1261,50 @@ class AxiosController extends Controller
         $masiv = Payment::where('id_mains','=',$id)->get();
         return $masiv;
 
+    }
+    public function paymentsSave(Request $request)
+    {
+        $id_mains = $request->id;
+        $months = $request->months;
+        $zatraty = $request->zatraty;
+        $idPayment = $request->idPayment;
+        $year = $request->god;
+
+        if ($idPayment == 0) // новая запись
+        {
+            $payment =new Payment;
+            $payment->id_mains = $id_mains;
+            $payment->payment = $zatraty;
+            $payment->months = json_encode($months);
+            $payment->year = $year;
+            $payment->save();
+        }
+        else // редактируем
+        {
+            $payment = Payment::find($idPayment);
+            $payment->payment = $zatraty;
+            $payment->months = json_encode($months);
+            $payment->year = $year;
+            $payment->save();
+        }
+
+
+        return Payment::where('id_mains','=',$id_mains)->get();
+    }
+    public function paymentsDelete(Request $request)
+    {
+        $id = $request->id;
+        $id_mains = $request->id_mains;
+
+        $payment = Payment::find($id);
+        $payment->deleted_at = date('Y-m-d');
+        $payment->save();
+
+        return Payment::where('id_mains','=',$id_mains)->get();
+    }
+
+    public function months(Request $request)
+    {
+        return Month::all();
     }
 }

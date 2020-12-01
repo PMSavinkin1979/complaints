@@ -68,4 +68,8 @@ Route::post('/axios-send/start','Admin\AxiosController@start');
 
 Route::post('/axios-send/chartStart','Admin\AxiosController@chartStart');
 Route::post('/axios-send/payments','Admin\AxiosController@payments');
+Route::post('/axios-send/paymentsSave','Admin\AxiosController@paymentsSave');
+Route::post('/axios-send/paymentsDelete','Admin\AxiosController@paymentsDelete');
+
+Route::post('/axios-send/months','Admin\AxiosController@months');
 //test
