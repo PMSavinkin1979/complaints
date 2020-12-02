@@ -28,11 +28,14 @@
     <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Main.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/file/1244680 (5304).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/file/14680 (5304).pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AnyChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AnyChart.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Charts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Charts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/TableMain.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/TableMain.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606469023906</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update 01.12 16:27">
+      <created>1606822058362</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606822058362</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,14 +375,19 @@
     <MESSAGE value="update 26.11 16:42" />
     <MESSAGE value="update 26.11 17:56" />
     <MESSAGE value="update 27.11 14:23" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 27.11 14:23" />
+    <MESSAGE value="update 01.12 16:27" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 01.12 16:27" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2" timestamp="1606469019366">
+    <state x="2290" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606912353267">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2290" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912353267" />
+    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2" timestamp="1606822053839">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="2176" y="116" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104892602" />
-    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606469019366" />
+    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606822053839" />
     <state x="1692" y="92" width="1736" height="896" key="DiffContextDialog" timestamp="1606711781570">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
@@ -383,30 +398,30 @@
     <state x="557" y="178" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1606548088340" />
     <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106713062" />
     <state x="2296" y="231" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474715099" />
-    <state width="1876" height="117" key="GridCell.Tab.0.bottom" timestamp="1606821471314">
+    <state width="1876" height="117" key="GridCell.Tab.0.bottom" timestamp="1606912536557">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="119" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
     <state width="1540" height="107" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606821471314" />
-    <state width="1876" height="117" key="GridCell.Tab.0.center" timestamp="1606821471314">
+    <state width="1876" height="117" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
+    <state width="1876" height="117" key="GridCell.Tab.0.center" timestamp="1606912536557">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="119" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
     <state width="1540" height="107" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606821471314" />
-    <state width="1876" height="117" key="GridCell.Tab.0.left" timestamp="1606821471313">
+    <state width="1876" height="117" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
+    <state width="1876" height="117" key="GridCell.Tab.0.left" timestamp="1606912536557">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="119" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
     <state width="1540" height="107" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606821471313" />
-    <state width="1876" height="117" key="GridCell.Tab.0.right" timestamp="1606821471314">
+    <state width="1876" height="117" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
+    <state width="1876" height="117" key="GridCell.Tab.0.right" timestamp="1606912536557">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="119" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
     <state width="1540" height="107" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606821471314" />
+    <state width="1876" height="117" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
     <state x="2353" y="241" key="RollbackChangesDialog" timestamp="1606212858251">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
@@ -416,11 +431,11 @@
     </state>
     <state x="301" y="61" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106739964" />
     <state x="2476" y="99" width="998" height="881" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474727081" />
-    <state x="392" y="182" key="Vcs.Push.Dialog.v2" timestamp="1606469040548">
+    <state x="392" y="182" key="Vcs.Push.Dialog.v2" timestamp="1606822081134">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="2152" y="272" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104915833" />
-    <state x="392" y="182" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606469040548" />
+    <state x="392" y="182" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606822081134" />
     <state x="2874" y="269" width="435" height="595" key="ftp.server.browser" timestamp="1606474703677">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>

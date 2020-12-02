@@ -554,7 +554,7 @@ class AxiosController extends Controller
         $end = '';
         /*dump($months);
         dump($stat);
-        dump($god); exit();*/
+        dump($god);*/
 
         if (count($months) != 0)
         {
@@ -1142,44 +1142,51 @@ class AxiosController extends Controller
 
         /*dump($month);
         dump($god);
-        dump($kvartal);exit();*/
+        dump($kvartal);*/
 
         if (gettype($month) == 'string')
         { //превращаем в ARRAY
             $months = json_decode($month);
-            foreach ($months as $key => $value)
-            {
-                $time = $value;
-                $value = $god.'-'.$time;
-                $months[$key]=$value;
-            }
         }
         else
         {
             $months = $month;
-            foreach ($months as $key => $value)
-            {
-                $time = $value;
-                $value = $god.'-'.$time;
-                $months[$key]=$value;
-            }
+        }
+        foreach ($months as $key => $value)
+        {
+            $time = $value;
+            $value = $time;
+            $months[$key]=$value;
         }
         sort($months);
 
         $num = 0;
         foreach ($months as $key => $value)
         {
-            //echo $key.' = '.$value.'<br>';
-            $masiv = Main::where('months','LIKE','%'.$value.'%')
+            $masiv = Payment::where('payments.months','LIKE','%'.$value.'%')
+                ->join('mains','payments.id_mains','=','mains.id')
                 ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
                 ->join('vina','mains.vina_id','=','vina.id')
-                ->select('mains.*','vid_garantiy.name as name_vid_gara','vina.name as name_vina') //'prikaz_gar','zakazchik','prikaz','zatraty','vina_id','vid_garantii','months',
+                ->select('mains.*','payments.payment','payments.months as pay_months','vid_garantiy.name as name_vid_gara','vina.name as name_vina')
                 ->get();
+            $flag = 0;
             foreach ($masiv as $item)
             {
-                // добавляем в массив
-                $arr[$num] = $item;
-                $num++;
+                // проверим есть ли в массиве подобные ID
+                foreach ($arr as $ar){
+                    //echo $ar['id'].'<br>';
+                    if ($item['id'] === $ar['id'])
+                    {
+                        $flag = 1;
+                    }
+                }
+                // добавляем в массив при условии что там подобной id не найдено
+                if ($flag === 0)
+                {
+                    $arr[$num] = $item;
+                    $num++;
+                }
+                $flag = 0;
             }
         }
         // удаляем дубли и возвращаем первый набор
@@ -1203,7 +1210,7 @@ class AxiosController extends Controller
         // складываем и заполняем в массив
         foreach ($result as $res)
         {
-            $vid_gar[$res->vid_garantii-1]['vidgar'] = $vid_gar[$res->vid_garantii-1]['vidgar'] + $res->zatraty;
+            $vid_gar[$res->vid_garantii-1]['vidgar'] = $vid_gar[$res->vid_garantii-1]['vidgar'] + $res->payment;
         }
 
         // с 0 в значении убираем

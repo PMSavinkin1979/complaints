@@ -33,6 +33,6 @@ class Main extends Model
 
     public function getShortZakazchik2Attribute($value)
     {
-        return Str::limit($this->zakazchik,12);
+        return Str::limit($this->zakazchik,16);
     }
 }

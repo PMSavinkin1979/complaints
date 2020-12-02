@@ -30,7 +30,7 @@
                                       value="ms"
                                       label="Выборка"
                                       multiple
-                                      hint="по месяцам или кварталам"
+                                      hint="по месяцам"
                                       dense
                                       v-model="monthSelect"
                                       @blur="monthChange(monthSelect)"
@@ -69,15 +69,15 @@
                                         </td>
                                         <v-tooltip bottom>
                                             <template v-slot:activator="{ on, attrs}">
-                                                <td :style="fontS+fn+fpx" v-on="on">{{ item.short_zakazchik }}</td>
+                                                <td :style="fontS+fn+fpx" v-on="on">{{ item.short_zakazchik2 }}</td>
                                             </template>
                                             <span>{{item.zakazchik }}</span>
                                         </v-tooltip>
                                         <td :style="fontS+fn+fpx">{{ item.prikaz }}</td>
-                                        <td :style="fontS+fn+fpx">{{ item.zatraty }}</td>
+                                        <td :style="fontS+fn+fpx">{{ item.payment }}</td>
                                         <v-tooltip bottom>
                                             <template v-slot:activator="{ on, attrs}">
-                                                <td :style="fontS+fn+fpx" v-on="on">{{ item.short_months }}</td>
+                                                <td :style="fontS+fn+fpx" v-on="on">{{ item.pay_months }}</td>
                                             </template>
                                             <span>{{item.months }}</span>
                                         </v-tooltip>

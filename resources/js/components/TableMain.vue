@@ -488,12 +488,12 @@
                 <td :class="getid(item.prikaz_gar)">{{ item.prikaz_gar}}</td>
                 <td :class="getid(item.name_vina)">{{ item.name_vina}}</td>
                 <!--<td :class="getid(item.name_ustranen)">{{ item.name_ustranen}}</td>-->
-                <v-tooltip top>
+                <!--<v-tooltip top>
                     <template v-slot:activator="{ on, attrs}">
                         <td :class="getid(item.zatraty)" v-on="on">{{ item.zatraty}}</td>
                     </template>
                     <span>период - {{ item.months }}</span>
-                </v-tooltip>
+                </v-tooltip>-->
                 <!--<td :class="getid(item.korrect)">{{ item.short_korrect}}</td>-->
             </tr>
                 </template>
@@ -503,11 +503,11 @@
             //---------------------
     </v-data-table>
         <!--snackbar затраты-->
-    <div class="text-center ma-2">
+    <!--<div class="text-center ma-2">
         <v-snackbar right v-model="snackbar" :timeout="timeout" :color="color" class="align-center">
             {{ label }}  {{ this.razryd(zatratyAll) }}
         </v-snackbar>
-    </div>
+    </div>-->
     </v-container>
 </div>
 </template>
@@ -545,7 +545,7 @@
                     { text: 'Гара-ый приказ', value: 'prikaz_gar' },
                     { text: 'Виновная сторона', value: 'name_vina' },
                     /*{ text: 'Устранения', value: 'name_ustranen' },*/
-                    { text: 'Затраты', value: 'zatraty' },
+                    /*{ text: 'Затраты', value: 'zatraty' },*/
                     /*{ text: 'Мероприятия', value: 'korrect' },*/
                     /*{ text: 'Статус', value: 'name_status' },*/
                     /*{ text: 'Файлы', value: 'pretenziy', sortable: false },*/
@@ -654,14 +654,14 @@
             formTitle () {
                 return this.editedIndex === -1 ? 'Новая запись' : 'Редактирование записи №'
             },
-            totalSum: function(){
+            /*totalSum: function(){
                 let sum = 0
                 this.danye.forEach(function(item){
                     sum += item.zatraty
                 })
                 //console.log(sum)
                 return sum
-            }
+            }*/
         },
         watch: {
             dialog (val) {
@@ -694,7 +694,7 @@
                 }),
                 axios.post('/axios-send/start',{god: this.god}).then(respond => {
                     this.danye = respond.data
-                    this.zatratyAll = this.totalSum
+                    //this.zatratyAll = this.totalSum
                 }),
                 //this.summaZatraty()
                 axios.post('/axios-send/garantiy',{status: 'trimmed'}).then(respond => {
@@ -845,7 +845,7 @@
                         axios.post('/axios-send/allEntries', {god: this.god}).then(respond => {
                             //document.getElementById('axios-send').innerHTML = respond.data
                             this.danye = respond.data
-                            this.zatratyAll = this.totalSum
+                            //this.zatratyAll = this.totalSum
                             //this.summaZatraty()
                         })
                     }
@@ -949,7 +949,7 @@
                 this.checkbox7 = false
                 axios.post('/axios-send/statusChange',{stat: stat.name2, months: this.monthSelect, god: this.god}).then(respond => {
                     this.danye = respond.data
-                    this.zatratyAll = this.totalSum
+                    //this.zatratyAll = this.totalSum
                     //this.summaZatraty()
                 })
             },
@@ -961,7 +961,7 @@
                         axios.post('/axios-send/allEntries', {god: this.god}).then(respond => {
                             //document.getElementById('axios-send').innerHTML = respond.data
                             this.danye = respond.data
-                            this.zatratyAll = this.totalSum
+                            //this.zatratyAll = this.totalSum
                             //this.summaZatraty()
                         })
                     })
@@ -972,7 +972,7 @@
                         axios.post('/axios-send/statusChange',{stat: this.itemStatusSelect.name2, months: this.monthSelect, god: this.god}).then(respond => {
                             /*document.getElementById('axios-send').innerHTML = respond.data*/
                             this.danye = respond.data
-                            this.zatratyAll = this.totalSum
+                            //this.zatratyAll = this.totalSum
                             //this.summaZatraty()
                         })
                     })
@@ -985,7 +985,7 @@
                 axios.post('/axios-send/statusChange',{god: god, months: this.monthSelect, stat: this.itemStatusSelect.name2}).then(respond => {
                     /*document.getElementById('axios-send').innerHTML = respond.data*/
                     this.danye = respond.data
-                    this.zatratyAll = this.totalSum
+                    //this.zatratyAll = this.totalSum
                     //this.summaZatraty()
                 })
             },
@@ -1017,6 +1017,7 @@
                 arr['deleted_at']=null
                 this.itemStatusSelect_card = arr
                 this.datee = []
+                this.paymentsItems = []
 
             },
             getNDate() {
@@ -1084,7 +1085,7 @@
                 axios.post('/axios-send/selectMonths',{stat: this.itemStatusSelect.name2, months: months,
                     god: this.god, check: this.checkbox7}).then(respond => {
                     this.danye = respond.data
-                    this.zatratyAll = this.totalSum
+                    //this.zatratyAll = this.totalSum
                     //this.summaZatraty()
                 })
             },
@@ -1162,7 +1163,7 @@
                     axios.post('/axios-send/allEntries', {god: this.god}).then(respond => {
                         //document.getElementById('axios-send').innerHTML = respond.data
                         this.danye = respond.data
-                        this.zatratyAll = this.totalSum
+                        //this.zatratyAll = this.totalSum
                         //this.summaZatraty()
                     })
                 }
@@ -1171,7 +1172,7 @@
                     axios.post('/axios-send/statusChange',{stat: this.itemStatusSelect.name2, months: this.monthSelect, god: this.god}).then(respond => {
                         //document.getElementById('axios-send').innerHTML = respond.data
                         this.danye = respond.data
-                        this.zatratyAll = this.totalSum
+                        //this.zatratyAll = this.totalSum
                         //this.summaZatraty()
                     })
                 }
@@ -1181,7 +1182,7 @@
                 axios.post('/axios-send/selectMonths',{stat: this.itemStatusSelect.name2, months: this.monthSelect,
                     god: this.god, check: this.checkbox7}).then(respond => {
                     this.danye = respond.data
-                    this.zatratyAll = this.totalSum
+                    //this.zatratyAll = this.totalSum
                     //this.summaZatraty()
                 })
             },
@@ -1200,8 +1201,9 @@
                     months: this.monthSelect, idPayment: idPayment, god: this.god}).then(respond => {
                     this.paymentsItems = respond.data
                 })
-                this.dialogPay = false;
+                this.dialogPay = false
                 this.idPayment = 0
+                this.monthSelect = []
             },
             editPayment(id, payment, months){
                 this.idPayment = id
