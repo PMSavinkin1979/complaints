@@ -346,16 +346,16 @@
                                 </v-tooltip>
                             </v-col>
                             <!--перечень Затраты-->
-                            <v-col cols="12" md="6" class="">
+                            <v-col cols="12" md="4" class="">
                                 <label>Затраты</label>
-                                <v-btn color="primary" x-small @click="newPayment()">добавить</v-btn>
-                                <v-card>
+                                <v-btn :disabled="disabled" color="primary" x-small @click="newPayment()">добавить</v-btn>
+                                <v-card :disabled="disabled">
                                     <v-list nav dense>
                                         <v-list-item-group v-model="paymentsItemsSelect" color="primary">
                                             <v-list-item v-for="(item, i) in paymentsItems" :key="i">
                                                 <v-list-item-content v-on:mouseenter="show=true" v-on:mouseleave="show=false">
                                                     <v-list-item-title>
-                                                        {{JSON.parse(item.months)}} - {{item.payment}} руб
+                                                        {{item.name_months}} - {{item.payment}} руб
                                                     </v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-item-icon>
@@ -392,7 +392,7 @@
                                                         </v-date-picker>
                                                     </v-menu>-->
                                                     <v-select v-model="monthSelect" :items="months" item-text="name" item-value="num"
-                                                              label="Период затрат" outlined dense multiple></v-select>
+                                                              label="Период затрат" outlined dense></v-select>
                                                     <!--затраты-->
                                                     <v-text-field type="number" outlined dense v-model="newZatraty" label="Сумма затрат за период"></v-text-field>
                                                 </v-card-text>
@@ -407,7 +407,7 @@
                                 </v-card>
                             </v-dialog>
                             <!--выбор файлов-->
-                            <v-col cols="12" md="3" class="">
+                            <v-col cols="12" md="4" class="">
                                 <input style="display: none" type="file" id="files" ref="files" multiple v-on:change="handleFilesUpload()"/>
                                 <label>Ранее добавленные файлы</label>
                                 <v-card>
@@ -428,7 +428,7 @@
                                 </v-card>
                             </v-col>
                             <!--Добавить файлы-->
-                            <v-col cols="12" md="3" class="">
+                            <v-col cols="12" md="4" class="">
                                 <label>Добавить файлы <v-icon color="green" v-on:click="addFiles()">mdi-file-plus</v-icon></label>
                                 <v-card>
                                     <v-list dense>
@@ -648,6 +648,7 @@
                 show: false,
                 newZatraty:0,
                 idPayment: 0,
+                disabled: true,
             }
         },
         computed: {
@@ -764,11 +765,15 @@
                 //загружаем затраты
                 axios.post('/axios-send/payments',{id:itemm.id}).then(respond => {
                     this.paymentsItems = respond.data
+                    //console.log(this.paymentsItems)
                 })
                 //if (this.editedItem.deleted_at === 0) {this.iconPress='mdi-delete'}
                 if (this.editedItem.deleted_at != null) {this.itemStatusSelect_card = 'Удалена'}
                 if (this.editedItem.flag == 1) {this.itemStatusSelect_card = 'В работе'}
                 if (this.editedItem.flag == 2) {this.itemStatusSelect_card = 'Завершена'}
+                // форма затраты открыта так как есть ID
+                this.disabled = false
+
                 this.dialog = true
                 //console.log(this.itemstatus_card)
             },
@@ -811,6 +816,10 @@
                     //console.log(this.editedItem)
                     // отправка на сервер изменений
                     axios.post('/axios-send/save', {name: this.editedItem}).then(respond => {
+                        axios.post('/axios-send/statusChange',{stat: this.itemStatusSelect.name2, months: this.monthSelect, god: this.god}).then(respond => {
+                            /*document.getElementById('axios-send').innerHTML = respond.data*/
+                            this.danye = respond.data
+                        })
                     })
                     if (this.files.length>0) {
                         console.log(this.files)
@@ -863,6 +872,7 @@
                     axios.post('/axios-send/newSave', {name: this.editedItem}).then(respond => {
                         //document.getElementById('axios-send').innerHTML = respond.data
                         id=respond.data
+                        this.editedItem.id = respond.data
                         if (this.files.length>0) {
                             console.log(this.files)
                             // отправляем файлы на сервер
@@ -1018,7 +1028,8 @@
                 this.itemStatusSelect_card = arr
                 this.datee = []
                 this.paymentsItems = []
-
+                // форма затраты закрыта так как нет ID
+                this.disabled = true
             },
             getNDate() {
                 /*alert(1)*/
@@ -1197,13 +1208,13 @@
                 console.log(dat)
             },
             paymentsSave(idPayment){
-                axios.post('/axios-send/paymentsSave',{id:this.editedItem.id, zatraty: this.newZatraty,
-                    months: this.monthSelect, idPayment: idPayment, god: this.god}).then(respond => {
-                    this.paymentsItems = respond.data
-                })
-                this.dialogPay = false
-                this.idPayment = 0
-                this.monthSelect = []
+                    axios.post('/axios-send/paymentsSave',{id:this.editedItem.id, zatraty: this.newZatraty,
+                        months: this.monthSelect, idPayment: idPayment, god: this.god}).then(respond => {
+                        this.paymentsItems = respond.data
+                    })
+                    this.dialogPay = false
+                    this.idPayment = 0
+                    this.monthSelect = []
             },
             editPayment(id, payment, months){
                 this.idPayment = id

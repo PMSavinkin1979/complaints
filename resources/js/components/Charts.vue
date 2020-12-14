@@ -75,12 +75,7 @@
                                         </v-tooltip>
                                         <td :style="fontS+fn+fpx">{{ item.prikaz }}</td>
                                         <td :style="fontS+fn+fpx">{{ item.payment }}</td>
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on, attrs}">
-                                                <td :style="fontS+fn+fpx" v-on="on">{{ item.pay_months }}</td>
-                                            </template>
-                                            <span>{{item.months }}</span>
-                                        </v-tooltip>
+                                        <td :style="fontS+fn+fpx">{{ item.name_months }}</td>
                                         <td :style="fontS+fn+fpx">{{ item.name_vina }}</td>
                                         <td :style="fontS+fn+fpx">{{ item.name_vid_gara }}</td>
                                     </tr>
@@ -122,7 +117,7 @@
                         </v-card>
                     </v-col>
                     <!--Модальное окно для просмотра информации-->
-                    <v-dialog v-model="dialog" max-width="900">
+                    <v-dialog v-model="dialog" max-width="700">
                         <v-card>
                             <v-card-title class="headline">
                                 Рекламация - {{editedItem.zakazchik}}
@@ -139,7 +134,7 @@
                                         <v-text-field dense :value="editedItem.zatraty" label="Расходы"></v-text-field>
                                     </v-col>
                                     <v-col cols="12" md="3" class="">
-                                        <v-textarea rows="1" dense :value="editedItem.months" label="Период расходов"></v-textarea>
+                                        <v-textarea rows="1" dense :value="editedItem.pay_months" label="Период расходов"></v-textarea>
                                     </v-col>
                                     <v-col cols="12" md="3" class="">
                                         <v-text-field dense :value="editedItem.name_vina" label="Виновный"></v-text-field>
@@ -204,7 +199,7 @@
                      { text: 'Контрагент', value: 'short_zakazchik' },
                      { text: '№ приказа', value: 'prikaz' },
                      { text: 'Расходы', value: 'zatraty' },
-                     { text: 'Период расходов', value: 'short_months' },
+                     { text: 'Период расходов', value: 'name_months' },
                      { text: 'Виновный', value: 'name_vina' },
                      { text: 'Причина ГС', value: 'name_vid_gara' },
                  ],
@@ -337,6 +332,7 @@
                  }
              },
              dataSendChart(){
+
                  if (this.itemsG == '')
                  {
                      console.log('нет данных для передачи')
@@ -351,7 +347,7 @@
                  else
                  {
                      this.summaZ = this.totalSum
-                     console.log(this.itemsG)
+                     //console.log(this.itemsG)
                      let str='['
                      let procent='['
                      let nam1='['

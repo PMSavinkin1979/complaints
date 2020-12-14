@@ -25,17 +25,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="">
+    <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="update 02.12 17:38">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Main.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/file/1244680 (5304).pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/file/14680 (5304).pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Charts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Charts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/TableMain.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/TableMain.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/test.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/test.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +177,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../report" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\PhpStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -231,6 +228,9 @@
       <workItem from="1606106674659" duration="88205000" />
       <workItem from="1606473116750" duration="2972000" />
       <workItem from="1606547406100" duration="2487000" />
+      <workItem from="1607057901819" duration="577000" />
+      <workItem from="1607419696290" duration="899000" />
+      <workItem from="1607593351720" duration="6537000" />
     </task>
     <task id="LOCAL-00001" summary="new project">
       <created>1606104128751</created>
@@ -330,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606822058362</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="update 02.12 17:38">
+      <created>1606912712286</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606912712286</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,74 +383,7 @@
     <MESSAGE value="update 26.11 17:56" />
     <MESSAGE value="update 27.11 14:23" />
     <MESSAGE value="update 01.12 16:27" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 01.12 16:27" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2290" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606912353267">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2290" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912353267" />
-    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2" timestamp="1606822053839">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2176" y="116" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104892602" />
-    <state x="2089" y="102" width="749" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606822053839" />
-    <state x="1692" y="92" width="1736" height="896" key="DiffContextDialog" timestamp="1606711781570">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state x="1692" y="92" width="1736" height="896" key="DiffContextDialog/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606711781570" />
-    <state x="557" y="178" key="FileChooserDialogImpl" timestamp="1606548088340">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="557" y="178" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1606548088340" />
-    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106713062" />
-    <state x="2296" y="231" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474715099" />
-    <state width="1876" height="117" key="GridCell.Tab.0.bottom" timestamp="1606912536557">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1493" height="119" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
-    <state width="1540" height="107" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
-    <state width="1876" height="117" key="GridCell.Tab.0.center" timestamp="1606912536557">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1493" height="119" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
-    <state width="1540" height="107" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
-    <state width="1876" height="117" key="GridCell.Tab.0.left" timestamp="1606912536557">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1493" height="119" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
-    <state width="1540" height="107" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
-    <state width="1876" height="117" key="GridCell.Tab.0.right" timestamp="1606912536557">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1493" height="119" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1606548597612" />
-    <state width="1540" height="107" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606103763440" />
-    <state width="1876" height="117" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606912536557" />
-    <state x="2353" y="241" key="RollbackChangesDialog" timestamp="1606212858251">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2353" y="241" key="RollbackChangesDialog/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606212858251" />
-    <state x="2476" y="99" width="998" height="881" key="SettingsEditor" timestamp="1606474727081">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state x="301" y="61" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606106739964" />
-    <state x="2476" y="99" width="998" height="881" key="SettingsEditor/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474727081" />
-    <state x="392" y="182" key="Vcs.Push.Dialog.v2" timestamp="1606822081134">
-      <screen x="0" y="0" width="1600" height="860" />
-    </state>
-    <state x="2152" y="272" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104915833" />
-    <state x="392" y="182" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606822081134" />
-    <state x="2874" y="269" width="435" height="595" key="ftp.server.browser" timestamp="1606474703677">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2874" y="269" width="435" height="595" key="ftp.server.browser/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606474703677" />
-    <state x="2321" y="421" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606127886309">
-      <screen x="1600" y="0" width="1920" height="1080" />
-    </state>
-    <state x="601" y="335" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1600.860/1600.0.1920.1080@0.0.1600.860" timestamp="1606104378493" />
-    <state x="2321" y="421" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1600.860/1600.0.1920.1080@1600.0.1920.1080" timestamp="1606127886309" />
+    <MESSAGE value="update 02.12 17:38" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 02.12 17:38" />
   </component>
 </project>

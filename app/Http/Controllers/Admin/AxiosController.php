@@ -41,6 +41,7 @@ class AxiosController extends Controller
         unset($nam['short_zakazchik2']);
         unset($nam['name2_flag']);
         unset($nam['name_flag']);
+        unset($nam['months']);
 
         Main::where('id','=',$nam['id'])
             ->update($nam);
@@ -55,16 +56,17 @@ class AxiosController extends Controller
         unset($nam['name_vina']);
         unset($nam['name_ustranen']);
         unset($nam['name_status']);
+        unset($nam['months']);
         /*unset($nam['short_zakazchik']);
         unset($nam['short_months']);
         unset($nam['short_zakazchik2']);
         unset($nam['name2_flag']);
         unset($nam['name_flag']);*/
         //dump($nam);
-        if (gettype($nam['months']) == 'array')
+        /*if (gettype($nam['months']) == 'array')
         {
             $nam['months']=json_encode($nam['months']);
-        }
+        }*/
         //dump($nam);
         $new = Main::create($nam);
         return $new->id;
@@ -625,7 +627,8 @@ class AxiosController extends Controller
 
         /*dump($stat);
         dump($god);
-        dump($head); exit();*/
+        dump($head);
+        dump($masi); exit();*/
 
         $put = $_SERVER['DOCUMENT_ROOT'];
         if ($masi == '')
@@ -712,7 +715,7 @@ class AxiosController extends Controller
             foreach ($masiv as $mas) {
                 foreach ($mas as $key => $m){ //short_zakazchik
                     if ($hea['value'] == 'short_zakazchik') {$hea['value'] = 'zakazchik';}
-                    if ($hea['value'] == 'short_months') {$hea['value'] = 'months';}
+                    //if ($hea['value'] == 'name_months') {$hea['value'] = 'months';}
                     if ($hea['value']==$key){
                         //echo $key.' => '.$m.'<br>';
                         $sheet->setCellValueByColumnAndRow($col,$row,$m);
@@ -1142,7 +1145,7 @@ class AxiosController extends Controller
 
         /*dump($month);
         dump($god);
-        dump($kvartal);*/
+        dump($kvartal); exit();*/
 
         if (gettype($month) == 'string')
         { //превращаем в ARRAY
@@ -1152,6 +1155,7 @@ class AxiosController extends Controller
         {
             $months = $month;
         }
+
         foreach ($months as $key => $value)
         {
             $time = $value;
@@ -1173,7 +1177,7 @@ class AxiosController extends Controller
             foreach ($masiv as $item)
             {
                 // проверим есть ли в массиве подобные ID
-                foreach ($arr as $ar){
+                /*foreach ($arr as $ar){
                     //echo $ar['id'].'<br>';
                     if ($item['id'] === $ar['id'])
                     {
@@ -1182,15 +1186,16 @@ class AxiosController extends Controller
                 }
                 // добавляем в массив при условии что там подобной id не найдено
                 if ($flag === 0)
-                {
+                {*/
                     $arr[$num] = $item;
                     $num++;
-                }
-                $flag = 0;
+                /*}
+                $flag = 0;*/
             }
         }
+        //return $arr;
         // удаляем дубли и возвращаем первый набор
-        $result = array_unique($arr);
+        $result = $arr;
         // упорядочиваем
         $num = 0;
         foreach ($result as $res)
@@ -1229,14 +1234,14 @@ class AxiosController extends Controller
             $num++;
         }
         //----------------------------------------------------------------------------------------
-        //dump($kvartal);
+        //берем фактическую выручку по кварталам
         $totalFakt=0;
         $quarters = Purpose::find($kvartal);
         foreach ($quarters as $quar)
         {
             $totalFakt = $totalFakt + $quar['fakt'];
         }
-        //dump($totalFakt);
+        //----------------------------------------------------------------------------------------
 
         $bigMasiv = array('table1'=>$resultEnd, 'table2'=>$vidGarEnd, 'purpose'=>$totalFakt);
 

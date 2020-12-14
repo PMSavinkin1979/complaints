@@ -28,11 +28,6 @@
 
             <router-view></router-view>
 
-        <!--<div class="text-center ma-2">
-            <v-snackbar left v-model="snackbarMessage" :timeout="timeout" :color="color" class="align-center">
-                {{ this.$store.getters.SNACKBARMESSAGE }}
-            </v-snackbar>
-        </div>-->
     </div>
 </template>
 
