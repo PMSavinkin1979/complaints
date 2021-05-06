@@ -25,11 +25,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="update 14.2020 11:04">
+    <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="update 06-05-2021 16:40">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Charts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Charts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/TableMain.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/TableMain.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +280,7 @@
       <workItem from="1617620825842" duration="36000" />
       <workItem from="1617970164063" duration="15000" />
       <workItem from="1620110624105" duration="598000" />
-      <workItem from="1620299481392" duration="1620000" />
+      <workItem from="1620299481392" duration="5788000" />
     </task>
     <task id="LOCAL-00001" summary="new project">
       <created>1606104128751</created>
@@ -396,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607925896868</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update 06-05-2021 16:40">
+      <created>1620301217096</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1620301217096</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +449,8 @@
     <MESSAGE value="update 01.12 16:27" />
     <MESSAGE value="update 02.12 17:38" />
     <MESSAGE value="update 14.2020 11:04" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 14.2020 11:04" />
+    <MESSAGE value="update 06-05-2021 16:40" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 06-05-2021 16:40" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
