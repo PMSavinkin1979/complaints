@@ -21,6 +21,7 @@
                         </v-col>
                         <!--Квартал-->
                         <v-col cols="12" md="3">
+<!--                            <v-checkbox v-model="chekMonth"></v-checkbox>-->
                             <v-select style="font-size: xx-small"
                                       outlined
                                       :items="months"
@@ -217,7 +218,8 @@
                  kvartal:[],
                  currentResult:0,
                  search2:'',
-                 editedItem:[]
+                 editedItem:[],
+                 chekMonth: false,
              }
          },
          created () {
@@ -277,12 +279,15 @@
                      kv = ['4']
 
                  }
+
                  this.monthSelect = JSON.parse(arr) //arr
                  // указываем текущий кварта
                  this.$store.dispatch('SET_QUARTERS', kv)
                  axios.post('/axios-send/months').then(respond => {
                      this.months = respond.data
                  })
+                 console.log(this.$store.getters.GOD)
+                 console.log(arr)
                  axios.post('/axios-send/chartStart',{month: arr, god: this.$store.getters.GOD, kvartal: this.$store.getters.QUARTERS}).then(respond => {
                      this.items = respond.data.table1
                      this.itemsG = respond.data.table2
@@ -316,6 +321,8 @@
              },
              filterYear(god){
                  console.log(god)
+                 this.$store.dispatch('SET_GOD', god)
+                 this.monthChange(this.monthSelect)
              },
              statusIcon(text){
                  if (text == 'В работе')

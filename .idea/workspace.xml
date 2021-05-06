@@ -25,14 +25,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="update 02.12 17:38">
+    <list default="true" id="35587927-96d0-4525-ad45-bd620ed27dd8" name="Default Changelist" comment="update 14.2020 11:04">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AxiosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Payment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Charts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Charts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/TableMain.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/TableMain.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/test.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/test.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +169,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -178,8 +177,14 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\PhpStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -231,6 +236,53 @@
       <workItem from="1607057901819" duration="577000" />
       <workItem from="1607419696290" duration="899000" />
       <workItem from="1607593351720" duration="6537000" />
+      <workItem from="1607925748195" duration="135000" />
+      <workItem from="1607946634705" duration="1901000" />
+      <workItem from="1608013529447" duration="113000" />
+      <workItem from="1608181943297" duration="19000" />
+      <workItem from="1608185398984" duration="620000" />
+      <workItem from="1608274333390" duration="31000" />
+      <workItem from="1608612276768" duration="576000" />
+      <workItem from="1608616349175" duration="33000" />
+      <workItem from="1608721776683" duration="1449000" />
+      <workItem from="1608787008587" duration="28000" />
+      <workItem from="1608793081557" duration="598000" />
+      <workItem from="1608835477524" duration="53000" />
+      <workItem from="1608835554495" duration="78000" />
+      <workItem from="1608889762727" duration="2387000" />
+      <workItem from="1608892604744" duration="9000" />
+      <workItem from="1609137498212" duration="68000" />
+      <workItem from="1609157836488" duration="53000" />
+      <workItem from="1609225026693" duration="914000" />
+      <workItem from="1609236859395" duration="682000" />
+      <workItem from="1610447477684" duration="8898000" />
+      <workItem from="1611210082976" duration="27000" />
+      <workItem from="1611210281817" duration="1209000" />
+      <workItem from="1611565040899" duration="616000" />
+      <workItem from="1612263475853" duration="709000" />
+      <workItem from="1612433067702" duration="698000" />
+      <workItem from="1612435937259" duration="63000" />
+      <workItem from="1613651957115" duration="1222000" />
+      <workItem from="1614772174069" duration="677000" />
+      <workItem from="1614840777451" duration="25000" />
+      <workItem from="1614848935974" duration="2021000" />
+      <workItem from="1614856242013" duration="1204000" />
+      <workItem from="1615264243232" duration="33000" />
+      <workItem from="1615897563926" duration="18000" />
+      <workItem from="1616573027901" duration="461000" />
+      <workItem from="1616574000466" duration="1866000" />
+      <workItem from="1616650336035" duration="24000" />
+      <workItem from="1616654303733" duration="1095000" />
+      <workItem from="1616665155865" duration="27000" />
+      <workItem from="1616739150557" duration="31000" />
+      <workItem from="1617617412716" duration="335000" />
+      <workItem from="1617618604321" duration="173000" />
+      <workItem from="1617620502667" duration="172000" />
+      <workItem from="1617620701250" duration="32000" />
+      <workItem from="1617620825842" duration="36000" />
+      <workItem from="1617970164063" duration="15000" />
+      <workItem from="1620110624105" duration="598000" />
+      <workItem from="1620299481392" duration="1620000" />
     </task>
     <task id="LOCAL-00001" summary="new project">
       <created>1606104128751</created>
@@ -337,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606912712286</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update 14.2020 11:04">
+      <created>1607925896868</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1607925896868</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,6 +443,11 @@
     <MESSAGE value="update 27.11 14:23" />
     <MESSAGE value="update 01.12 16:27" />
     <MESSAGE value="update 02.12 17:38" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 02.12 17:38" />
+    <MESSAGE value="update 14.2020 11:04" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 14.2020 11:04" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

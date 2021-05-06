@@ -1168,6 +1168,7 @@ class AxiosController extends Controller
         foreach ($months as $key => $value)
         {
             $masiv = Payment::where('payments.months','LIKE','%'.$value.'%')
+                ->where('payments.year','=',$god)
                 ->join('mains','payments.id_mains','=','mains.id')
                 ->join('vid_garantiy','mains.vid_garantii','=','vid_garantiy.id')
                 ->join('vina','mains.vina_id','=','vina.id')

@@ -1,7 +1,7 @@
 <template xmlns="http://www.w3.org/1999/html">
 <div>
     <v-container fluid class="pt-12">
-    <v-container>
+    <v-container fluid>
         <!--шапка в таблице-->
         <!--<v-card class="d-flex justify-md-center mb-3">
             &lt;!&ndash;Статус&ndash;&gt;
@@ -103,7 +103,7 @@
                     <template v-slot:activator="{ on, attrs}">
                         <v-checkbox class="pt-2" label="все записи" dense v-model="checkbox8" @change="check2(checkbox8)" v-on="on"></v-checkbox>
                     </template>
-                    <span>для Поиска во всех статутсами за {{god}}</span>
+                    <span>для Поиска во всех статутсах за {{god}}</span>
                 </v-tooltip>
                 <v-divider
                     class="mx-4"
@@ -677,7 +677,7 @@
             this.initialize()
         },
         updated() {
-            this.god = this.$store.getters.GOD
+            //this.god = this.$store.getters.GOD
         },
         methods: {
             initialize () { //
@@ -961,6 +961,7 @@
                     this.danye = respond.data
                     //this.zatratyAll = this.totalSum
                     //this.summaZatraty()
+                    localStorage.setItem('status',stat.name2)
                 })
             },
             statusChange_card(stat, id){
@@ -994,9 +995,10 @@
                 //alert(god)
                 axios.post('/axios-send/statusChange',{god: god, months: this.monthSelect, stat: this.itemStatusSelect.name2}).then(respond => {
                     /*document.getElementById('axios-send').innerHTML = respond.data*/
-                    this.danye = respond.data
+                    //this.danye = respond.data
                     //this.zatratyAll = this.totalSum
                     //this.summaZatraty()
+                    this.check2(this.checkbox8)
                 })
             },
             newItem(){
